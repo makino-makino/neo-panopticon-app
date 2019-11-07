@@ -14,7 +14,7 @@ export default {
 
 <style>
     #tabbar{
-        background-color: yellow;
+        background-color: green;
         height: 80px;
         width: 100%;
     }
