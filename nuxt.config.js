@@ -32,10 +32,6 @@ export default {
   /*
   ** Nuxt.js dev-modules
   */
-  buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
-  ],
   /*
   ** Nuxt.js modules
   */
@@ -44,13 +40,23 @@ export default {
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/proxy'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+  },
+
+  proxy: {
+    '/api': {
+      target: 'http://api:3000/',
+      pathRewrite: {
+        '^/api/': '/'
+      }
+    }
   },
   /*
   ** Build configuration
