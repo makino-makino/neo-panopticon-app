@@ -1,10 +1,12 @@
 <template>
   <div>
     <p>{{user.name}}</p>
-    <!-- <p>{{user.img}}</p> -->
+    <p>{{user.icon}}</p>
     <p>{{content}}</p>
     <p>{{created_at}}</p>
     <p>{{evaluation}}</p>
+
+    ---
   </div>
 </template>
 
