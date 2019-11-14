@@ -43,6 +43,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/proxy',
     '@nuxtjs/style-resources',
+    '@nuxtjs/vuetify',
   ],
 
   styleResources: {
