@@ -27,9 +27,10 @@ export default {
 <style lang="scss" scoped>
 #navigationbar {
   background-color: $toolcolor;
-  height: 65px;
+  height: $navigationbarheight;
   width: 100%;
   display: flex;
+  position: fixed;
   .title {
     position: absolute;
     left: 50%;
@@ -37,7 +38,7 @@ export default {
     #navigationbar__title {
       text-align: center;
       color: $navigationTextColor;
-      line-height: 65px;
+      line-height: $navigationbarheight;
       font-size: 30px;
       font-weight: 600;
       margin: 0;
@@ -45,7 +46,7 @@ export default {
   }
   div {
     a {
-      line-height: 65px;
+      line-height: $navigationbarheight;
       font-size: 20px;
       button {
         color: $navigationButtonColor;

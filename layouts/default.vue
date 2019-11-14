@@ -23,6 +23,7 @@ export default {
 
 <style lang="scss">
 div.contents{
+  padding-top: $navigationbarheight;
   padding-bottom: $tabheight;
 }
 html {
