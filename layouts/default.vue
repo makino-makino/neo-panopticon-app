@@ -1,16 +1,19 @@
 <template>
   <div>
     <NavigationBar :titleItem=titleItem />
-    <nuxt />
+    <div class="contents"><nuxt /></div>
+    <TabBar />
   </div>
 </template>
 
 <script>
 import NavigationBar from "~/components/NavigationBar.vue"
+import TabBar from "~/components/TabBar.vue"
 import { mapState } from "vuex"
 export default {
   components: {
-    NavigationBar
+    NavigationBar,
+    TabBar
   },
   computed: mapState([
     'titleItem',
@@ -19,6 +22,9 @@ export default {
 </script>
 
 <style lang="scss">
+div.contents{
+  padding-bottom: $tabheight;
+}
 html {
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;

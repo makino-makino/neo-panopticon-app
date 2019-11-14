@@ -1,25 +1,17 @@
 <template>
-    <div>
-        <div id="tabbar">
-            <p id="tabbar__title">{{title}}</p>
-        </div>
-    </div>
+  <div id="tabbar"></div>
 </template>
 
 <script>
-export default {
-    props: ['title']
-}
+export default {};
 </script>
 
-<style>
-    #tabbar{
-        background-color: orange;
-        height: 80px;
-        width: 100%;
-    }
-    #tabbar__title{
-        text-align: center;
-        line-height: 80px;
-    }
+<style lang="scss" scoped>
+#tabbar {
+  background-color: $toolcolor;
+  height: $tabheight;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
 </style>
