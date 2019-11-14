@@ -34,8 +34,7 @@ export default {
     }
 
     var resp = await axios.get(
-      // `${POSTS_API}?${this.query}`,
-      `${POSTS_API}`, 
+      `${POSTS_API}?${this.query}`, 
       { headers: HEADERS }
     )
 
