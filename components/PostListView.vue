@@ -19,6 +19,9 @@ import axios from 'axios'
 const POSTS_API = '/api/posts'
 
 export default {
+  props: {
+    query: String
+  },
   components: {
     PostView
   },
@@ -31,7 +34,8 @@ export default {
     }
 
     var resp = await axios.get(
-      POSTS_API, 
+      // `${POSTS_API}?${this.query}`,
+      `${POSTS_API}`, 
       { headers: HEADERS }
     )
 
