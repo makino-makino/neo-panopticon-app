@@ -41,8 +41,15 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    '@nuxtjs/style-resources',
   ],
+
+  styleResources: {
+    scss: [
+    './assets/style/*.scss',
+    ],
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
