@@ -6,6 +6,7 @@
             v-bind:bio="user.bio"
             v-bind:icon="user.icon"
             v-bind:evaluation="user.evaluation" />
+        <p>---</p>
       </div> 
 
   </div>

@@ -18,7 +18,7 @@ export default {
   },
   data() {
       return {
-        query: 'followee=1'
+        query: ''
       }
   },
   methods: {
