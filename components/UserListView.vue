@@ -27,7 +27,7 @@ export default {
   props: {
     query: String
   },
-  async mounted () {
+  async mounted() {
     const HEADERS = {
       'Accept': 'application/json',
       'access-token': localStorage.access_token,

@@ -25,7 +25,7 @@ export default {
     icon: String,
     evaluation: Number
   },
-  async mounted () {
+  async mounted() {
 
   },
   data() {

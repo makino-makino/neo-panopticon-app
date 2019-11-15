@@ -21,7 +21,7 @@ const LOGIN_API = '/api/auth/sign_in'
 export default {
   components: {
   },
-  data: () => {
+  data() {
     return {
       email: '',
       password: '',
@@ -30,24 +30,19 @@ export default {
 
   methods: {
     async login (e) {
-      try {
-        var resp = await axios.post(LOGIN_API, {
-          email: this.email,
-          password: this.password,
-        })
+      var resp = await axios.post(LOGIN_API, {
+        email: this.email,
+        password: this.password,
+      })
 
-        localStorage.access_token = resp.headers['access-token'];
-        localStorage.client = resp.headers.client;
-        localStorage.uid = resp.headers.uid;
-        
-        localStorage.user_id = resp.data.data.id;
+      localStorage.access_token = resp.headers['access-token'];
+      localStorage.client = resp.headers.client;
+      localStorage.uid = resp.headers.uid;
+      
+      localStorage.userId = resp.data.data.id;
 
-        // TODO: ちゃんと次の場所にジャンプさせる
-        // location.href = '/'
-
-      } catch (e) {
-        // TODO: 
-      }
+      // TODO: ちゃんと次の場所にジャンプさせる
+      location.href = '/'
     }
   }
 }

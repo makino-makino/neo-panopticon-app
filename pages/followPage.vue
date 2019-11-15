@@ -10,16 +10,16 @@ import UserListView from '~/components/UserListView.vue'
 import axios from 'axios'
 
 
-const USER_API = '/api/users/'
+const USERS_API = '/api/users/'
 
 export default {
   components: {
     UserListView
   },
   data() {
-      return {
-        query: ''
-      }
+    return {
+      query: ''
+    }
   },
   methods: {
     

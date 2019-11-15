@@ -16,7 +16,7 @@ const POSTS_API = '/api/posts'
 export default {
   components: {
   },
-  data: () => {
+  data() {
     return {
       content: ''
     }
@@ -24,31 +24,28 @@ export default {
 
   methods: {
     async submit (e) {
-      try {
-        const HEADERS = {
-          'Accept': 'application/json',
-          'access-token': localStorage.access_token,
-          'client': localStorage.client,
-          'uid': localStorage.uid
-        }
-
-        var resp = await axios.post(
-          POSTS_API, 
-          {
-            content: this.content
-          },
-          {
-            headers: HEADERS,
-            
-          }
-        )
-
-        // TODO: ちゃんと次の場所にジャンプさせる
-        location.href = '/'
-
-      } catch (e) {
-        console.log(e)
+      const HEADERS = {
+        'Accept': 'application/json',
+        'access-token': localStorage.access_token,
+        'client': localStorage.client,
+        'uid': localStorage.uid
       }
+
+      var resp = await axios.post(
+        POSTS_API, 
+        {
+          content: this.content
+        },
+        {
+          headers: HEADERS,
+          
+        }
+      )
+
+      // TODO: ちゃんと次の場所にジャンプさせる
+      location.href = '/'
+
+
     }
   }
 }

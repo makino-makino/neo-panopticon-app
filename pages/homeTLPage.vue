@@ -1,6 +1,6 @@
 <template>
   <div>    
-    <PostListView v-if="loaded" v-bind:query="`tl=local&followers=${user_id}`"/>
+    <PostListView v-if="loaded" v-bind:query="query"/>
   </div>
 </template>
 
@@ -14,14 +14,15 @@ export default {
     PostListView
   },
   mounted() {
-    this.user_id = localStorage.user_id
+    var userId = localStorage.userId
+    this.query = `tl=local&followers=${userId}`
     this.loaded = true
   },
 
   data() {
     return {
       posts: [],
-      user_id: '',
+      query: '',
       loaded: false
     }
   },
