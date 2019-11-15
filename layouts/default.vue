@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavigationBar :titleItem="{rightTitle: 'right title', leftTitle: 'left titile', title: 'title'}" />
+    <!-- <NavigationBar :titleItem="{rightTitle: 'right title', leftTitle: 'left titile', title: 'title'}" /> -->
     <nuxt />
   </div>
 </template>
@@ -12,7 +12,7 @@ import { mapState } from "vuex"
 export default {
   components: {
     NavigationBar,
-    TabBar
+    // TabBar
   },
   computed: mapState([
     'titleItem',

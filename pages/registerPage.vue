@@ -50,6 +50,8 @@ export default {
         localStorage.client = resp.headers.client;
         localStorage.uid = resp.headers.uid;
         
+        localStorage.user_id = resp.data.data.id;
+
         // TODO: ちゃんと次の場所にジャンプさせる
         location.href = '/'
 

@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h1>ログイン</h1>
-    
     <form>
       メールアドレス<br>
       <input v-model="email" type="email"><br>
@@ -42,8 +40,10 @@ export default {
         localStorage.client = resp.headers.client;
         localStorage.uid = resp.headers.uid;
         
+        localStorage.user_id = resp.data.data.id;
+
         // TODO: ちゃんと次の場所にジャンプさせる
-        location.href = '/'
+        // location.href = '/'
 
       } catch (e) {
         // TODO: 
