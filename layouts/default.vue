@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavigationBar :titleItem=titleItem />
+    <NavigationBar :titleItem="{rightTitle: 'right title', leftTitle: 'left titile', title: 'title'}" />
     <nuxt />
   </div>
 </template>
