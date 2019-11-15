@@ -35,32 +35,27 @@ export default {
   },
   methods: {
     async follow(user_id) {
-      console.log(user_id)
-      try {
-        const HEADERS = {
-          'Accept': 'application/json',
-          'access-token': localStorage.access_token,
-          'client': localStorage.client,
-          'uid': localStorage.uid
-        }
-
-        var resp = await axios.post(
-          FOLLOWINGS_API, 
-          {
-            to_id: user_id
-          },
-          {
-            headers: HEADERS,
-            
-          }
-        )
-
-        // TODO: ちゃんと次の場所にジャンプさせる
-        location.href = '/'
-
-      } catch (e) {
-        console.log(e)
+      const HEADERS = {
+        'Accept': 'application/json',
+        'access-token': localStorage.access_token,
+        'client': localStorage.client,
+        'uid': localStorage.uid
       }
+
+      var resp = await axios.post(
+        FOLLOWINGS_API, 
+        {
+          to_id: user_id
+        },
+        {
+          headers: HEADERS,
+          
+        }
+      )
+
+      // TODO: ちゃんと次の場所にジャンプさせる
+      location.href = '/'
+
     }
 
   }

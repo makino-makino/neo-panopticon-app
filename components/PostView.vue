@@ -31,8 +31,6 @@ export default {
       'uid': localStorage.uid
     }
 
-    console.log(this.userId)
-
     var resp = await axios.get(
       USERS_API + this.userId, 
       { headers: HEADERS }
