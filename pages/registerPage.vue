@@ -1,26 +1,23 @@
 <template>
   <div>
-    <h1>新規登録</h1>
-    
     <form>
-      名前
+      名前<br>
       <input v-model="name" type="text"><br>
-      メールアドレス
+      メールアドレス<br>
       <input v-model="email" type="email"><br>
-      電話番号
+      電話番号<br>
       <input v-model="phone" type="tel"><br>
-      パスワード
+      パスワード<br>
       <input v-model="password" type="password"><br>
-      パスワード（確認用）
+      パスワード（確認用）<br>
       <input v-model="password_confirm" type="password"><br>
-      <input v-on:click="signUp" value="submit" type="button">
+      <input v-on:click="signUp" value="送信" type="button">
     </form>
   </div>
 </template>
 
 <script>
 
-import NavigationBar from '~/components/NavigationBar.vue'
 import axios from 'axios'
 
 const SIGN_UP_API = '/api/auth'
@@ -28,7 +25,6 @@ const SIGN_UP_API = '/api/auth'
 
 export default {
   components: {
-    NavigationBar
   },
   data: () => {
     return {
@@ -58,7 +54,7 @@ export default {
         location.href = '/'
 
       } catch (e) {
-        // TODO: 
+        console.log(e)
       }
     }
   }
