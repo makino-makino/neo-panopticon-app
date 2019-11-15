@@ -19,7 +19,7 @@ export default {
   data: () => {
     return {
       posts: [],
-      query: 'tl=world'
+      query: 'tl=global'
     }
   },
   methods: {
