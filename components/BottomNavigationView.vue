@@ -24,6 +24,12 @@
           <img src="/images/pen.png" class="content-button-img" />
         </div>
       </nuxt-link>
+
+      <nuxt-link to="/setting">
+        <div class="pure-button content-button">
+          <img src="/images/setting.png" class="content-button-img" />
+        </div>
+      </nuxt-link>
     </div>
   </div>
 </template>
