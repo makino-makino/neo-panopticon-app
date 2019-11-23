@@ -20,7 +20,7 @@
           <div class="pure-button content-button">
             <img src="/images/-ev.png" class="content-button-img" />
           </div>
-          <div class="pure-button content-button">
+          <div class="pure-button content-button  pure-button-disabled">
             <p class="content-button-img">{{ evaluation }}</p>
           </div>
         </div>
