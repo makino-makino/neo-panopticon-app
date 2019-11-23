@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-      <a class="pure-menu-heading" href="">title</a>
+      <a class="pure-menu-heading" href="">{{ title }}</a>
 
       <ul class="pure-menu-list">
         <li class="pure-menu-item pure-menu-selected">
-          <a href="#" class="menu-link pure-menu-link">Settings</a>
+          <a v-on:click="update()" class="menu-link pure-menu-link">Reload</a>
         </li>
       </ul>
     </div>
@@ -16,7 +16,12 @@
 
 <script>
 export default {
-  props: ["title"]
+  props: ["title"],
+  methods: {
+    update() {
+      location.reload();
+    }
+  }
 };
 </script>
 
