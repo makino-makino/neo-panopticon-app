@@ -3,15 +3,22 @@
     <div class="header-dummy"></div>
 
     <div class="footer l-box is-center">
-      <div class="pure-button content-button">
-        <img src="/images/home.png" class="content-button-img" />
-      </div>
-      <div class="pure-button content-button">
-        <img src="/images/earth.png" class="content-button-img" />
-      </div>
-      <div class="pure-button content-button">
-        <img src="/images/bell.png" class="content-button-img" />
-      </div>
+      <nuxt-link to="/localTL">
+        <div class="pure-button content-button">
+          <img src="/images/home.png" class="content-button-img" />
+        </div>
+      </nuxt-link>
+      <nuxt-link to="/globalTL">
+        <div class="pure-button content-button">
+          <img src="/images/earth.png" class="content-button-img" />
+        </div>
+      </nuxt-link>
+
+      <nuxt-link to="/notification">
+        <div class="pure-button content-button">
+          <img src="/images/bell.png" class="content-button-img" />
+        </div>
+      </nuxt-link>
     </div>
   </div>
 </template>
