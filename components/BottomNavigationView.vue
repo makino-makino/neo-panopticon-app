@@ -19,6 +19,11 @@
           <img src="/images/bell.png" class="content-button-img" />
         </div>
       </nuxt-link>
+      <nuxt-link to="/newPost">
+        <div class="pure-button content-button">
+          <img src="/images/pen.png" class="content-button-img" />
+        </div>
+      </nuxt-link>
     </div>
   </div>
 </template>
