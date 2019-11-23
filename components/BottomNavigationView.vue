@@ -1,5 +1,7 @@
 <template>
   <div>
+    <div class="header-dummy"></div>
+
     <div class="footer l-box is-center">
       <div class="pure-button content-button">
         <img src="/images/home.png" class="content-button-img" />
@@ -48,5 +50,9 @@
   width: 30px;
   height: 30px;
   display: inline-block;
+}
+
+.header-dummy {
+  height: 110px;
 }
 </style>
