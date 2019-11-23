@@ -14,10 +14,16 @@
       <div class="post-content-block">
         <p class="post-content">{{ content }}</p>
         <div class="content-buttons-block">
-          <div class="pure-button content-button">
+          <div
+            v-on:click="submitEvaluation(true)"
+            class="pure-button content-button"
+          >
             <img src="/images/+ev.png" class="content-button-img" />
           </div>
-          <div class="pure-button content-button">
+          <div
+            v-on:click="submitEvaluation(false)"
+            class="pure-button content-button"
+          >
             <img src="/images/-ev.png" class="content-button-img" />
           </div>
           <div class="pure-button content-button  pure-button-disabled">
@@ -32,10 +38,13 @@
 <script>
 import axios from "axios";
 
+const POSTS_API = "/api/posts/";
 const USERS_API = "/api/users/";
+const EVALUATION_API = "/api/evaluations/";
 
 export default {
   props: {
+    postId: Number,
     content: String,
     userId: Number,
     createdAt: String,
@@ -57,6 +66,31 @@ export default {
     return {
       user: {}
     };
+  },
+  methods: {
+    async submitEvaluation(isPositive) {
+      const HEADERS = {
+        Accept: "application/json",
+        "access-token": localStorage.access_token,
+        client: localStorage.client,
+        uid: localStorage.uid
+      };
+
+      var resp = await axios.post(
+        EVALUATION_API,
+        {
+          post_id: this.postId,
+          is_positive: isPositive
+        },
+        {
+          headers: HEADERS
+        }
+      );
+
+      var resp = await axios.get(POSTS_API + this.postId, { headers: HEADERS });
+
+      this.evaluation = resp.data.evaluation;
+    }
   }
 };
 </script>
