@@ -1,75 +1,85 @@
 <template>
   <div>
-    <!-- <NavigationBar :titleItem="{rightTitle: 'right title', leftTitle: 'left titile', title: 'title'}" /> -->
+    <NavigationBar
+      :titleItem="{
+        title: 'title'
+      }"
+    />
     <nuxt />
+    <BottomNavigationView />
   </div>
 </template>
 
 <script>
-import NavigationBar from "~/components/NavigationBar.vue"
-import TabBar from "~/components/TabBar.vue"
-import { mapState } from "vuex"
+import NavigationBar from "~/components/NavigationBar.vue";
+import BottomNavigationView from "~/components/BottomNavigationView.vue";
+import TabBar from "~/components/TabBar.vue";
+import { mapState } from "vuex";
 export default {
   components: {
     NavigationBar,
-    // TabBar
+    BottomNavigationView
   },
-  computed: mapState([
-    'titleItem',
-  ])
+  computed: mapState(["titleItem"])
 };
 </script>
 
 <style lang="scss">
-div.contents{
-  padding-top: $navigationbarheight;
-  padding-bottom: $tabheight;
-}
-html {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+body {
+  line-height: 1.7em;
+  color: #cccccc;
+  font-size: 30px;
+  background: #313131;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+  color: #34495e;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.pure-img-responsive {
+  max-width: 100%;
+  height: auto;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+/*
+ * -- PURE FORM STYLES --
+ * Style the form inputs and labels
+ */
+.pure-form label {
+  margin: 1em 0 0;
+  font-weight: bold;
+  font-size: 100%;
 }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+.pure-form input[type] {
+  border: 2px solid #ddd;
+  box-shadow: none;
+  font-size: 100%;
+  width: 100%;
+  margin-bottom: 1em;
 }
 
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+/*
+ * -- PURE BUTTON STYLES --
+ * I want my pure-button elements to look a little different
+ */
+.pure-button {
+  background-color: rgb(48, 48, 48);
+  color: white;
+  padding: 0.5em 2em;
+  border-radius: 5px;
+}
+
+a.pure-button-primary {
+  background: white;
+  color: #ca3e47;
+  border-radius: 5px;
+  font-size: 120%;
 }
 </style>
