@@ -1,18 +1,7 @@
 <template>
   <div>
     <div class="post">
-      <div class="user">
-        <div class="user-icon-block">
-          <nuxt-link :to="{ name: 'users-id', params: { id: user.id } }">
-            <img src="/images/people.png" class="user-icon" />
-          </nuxt-link>
-        </div>
-
-        <div class="user-name-block">
-          <p class="user-name">{{ user.name }}</p>
-        </div>
-      </div>
-
+      <UserBlock v-bind:userId="userId" />
       <div class="post-content-block">
         <p class="post-content">{{ content }}</p>
         <div class="content-buttons-block">
@@ -39,6 +28,7 @@
 
 <script>
 import axios from "axios";
+import UserBlock from "~/components/UserBlock";
 
 const POSTS_API = "/api/posts/";
 const USERS_API = "/api/users/";
@@ -52,22 +42,8 @@ export default {
     createdAt: String,
     evaluation: Number
   },
-  async mounted() {
-    const HEADERS = {
-      Accept: "application/json",
-      "access-token": localStorage.access_token,
-      client: localStorage.client,
-      uid: localStorage.uid
-    };
-
-    var resp = await axios.get(USERS_API + this.userId, { headers: HEADERS });
-
-    this.user = resp.data;
-  },
-  data() {
-    return {
-      user: {}
-    };
+  components: {
+    UserBlock
   },
   methods: {
     async submitEvaluation(isPositive) {
