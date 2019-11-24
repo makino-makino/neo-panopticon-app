@@ -1,24 +1,22 @@
 <template>
   <div>
-      <div v-for='user in users'> 
-        <UserView v-bind:id="user.id"
-            v-bind:name="user.name"
-            v-bind:bio="user.bio"
-            v-bind:icon="user.icon"
-            v-bind:evaluation="user.evaluation" />
-        <p>---</p>
-      </div> 
-
+    <div v-for="user in users">
+      <UserView
+        v-bind:id="user.id"
+        v-bind:name="user.name"
+        v-bind:bio="user.bio"
+        v-bind:icon="user.icon"
+        v-bind:evaluation="user.evaluation"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import UserView from "~/components/UserView.vue";
+import axios from "axios";
 
-import UserView from '~/components/UserView.vue'
-import axios from 'axios'
-
-
-const USERS_API = '/api/users/'
+const USERS_API = "/api/users/";
 
 export default {
   components: {
@@ -29,33 +27,25 @@ export default {
   },
   async mounted() {
     const HEADERS = {
-      'Accept': 'application/json',
-      'access-token': localStorage.access_token,
-      'client': localStorage.client,
-      'uid': localStorage.uid
-    }
+      Accept: "application/json",
+      "access-token": localStorage.access_token,
+      client: localStorage.client,
+      uid: localStorage.uid
+    };
 
-    var resp = await axios.get(
-      `${USERS_API}?${this.query}`,
-      {
-        headers: HEADERS
-      }
-    )
+    var resp = await axios.get(`${USERS_API}?${this.query}`, {
+      headers: HEADERS
+    });
 
-    this.users = resp.data
+    this.users = resp.data;
   },
   data() {
     return {
       users: []
-    }
+    };
   },
-  methods: {
-    
-  }
-}
-
-
-
+  methods: {}
+};
 </script>
 
 <style>
