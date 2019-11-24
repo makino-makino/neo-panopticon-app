@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="content">
+      <nuxt-link to="register" class="userzumi">登録をする方はこちら</nuxt-link>
       <div class="inputs">
         <div class="a_content">
           <div></div>
@@ -43,18 +44,21 @@ export default {
 
   methods: {
     async login(e) {
-      var resp = await axios.post(LOGIN_API, {
-        email: this.email,
-        password: this.password
-      });
+      try {
+        var resp = await axios.post(LOGIN_API, {
+          email: this.email,
+          password: this.password
+        });
 
-      localStorage.access_token = resp.headers["access-token"];
-      localStorage.client = resp.headers.client;
-      localStorage.uid = resp.headers.uid;
+        localStorage.access_token = resp.headers["access-token"];
+        localStorage.client = resp.headers.client;
+        localStorage.uid = resp.headers.uid;
 
-      localStorage.userId = resp.data.data.id;
-      // TODO: ちゃんと次の場所にジャンプさせる
-      this.$router.push("localTL");
+        localStorage.userId = resp.data.data.id;
+        this.$router.push("localTL");
+      } catch (e) {
+        console.log(e);
+      }
     }
   }
 };
@@ -62,6 +66,20 @@ export default {
 
 <style lang="scss" scoped>
 /* css */
+.userzumi {
+  position: absolute;
+  font-size: 13px;
+  right: 0;
+  width: 178px;
+  background-color: white;
+  text-align: center;
+  color: black;
+  height: 50px;
+  line-height: 100%;
+  border: 4px solid #959191;
+  border-radius: 22px;
+  padding: 15px 0;
+}
 .a_content {
   display: grid;
   grid-template-columns: 60px 170px;
@@ -115,5 +133,6 @@ input {
   margin-top: 26px;
   font-size: 16px;
   line-height: 100%;
+  padding: 0;
 }
 </style>
