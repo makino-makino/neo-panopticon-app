@@ -69,7 +69,7 @@ export default {
     this.user = resp.data;
 
     this.loaded = true;
-    this.query = `tl=user&user_id=${localStorage.userId}`;
+    this.query = `tl=user&user_id=${this.userId}`;
   }
 };
 </script>
