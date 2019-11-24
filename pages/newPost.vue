@@ -22,24 +22,28 @@ export default {
 
   methods: {
     async submit(e) {
-      const HEADERS = {
-        Accept: "application/json",
-        "access-token": localStorage.access_token,
-        client: localStorage.client,
-        uid: localStorage.uid
-      };
+      if (this.content != "") {
+        const HEADERS = {
+          Accept: "application/json",
+          "access-token": localStorage.access_token,
+          client: localStorage.client,
+          uid: localStorage.uid
+        };
 
-      var resp = await axios.post(
-        POSTS_API,
-        {
-          content: this.content
-        },
-        {
-          headers: HEADERS
-        }
-      );
+        var resp = await axios.post(
+          POSTS_API,
+          {
+            content: this.content
+          },
+          {
+            headers: HEADERS
+          }
+        );
 
-      location.href = "/localTL";
+        location.href = "/localTL";
+      }else{
+        alert("投稿を入力してください")
+      }
     }
   }
 };
