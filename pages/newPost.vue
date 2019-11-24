@@ -41,8 +41,8 @@ export default {
         );
 
         location.href = "/localTL";
-      }else{
-        alert("投稿を入力してください")
+      } else {
+        alert("投稿を入力してください");
       }
     }
   }
@@ -55,7 +55,7 @@ h2 {
   font-size: 10rem;
   font-size: 1.5rem;
   letter-spacing: -2px;
-  width: 300px;
+  width: 70vw;
   margin: 0 auto;
   color: white;
   margin-top: 35px;
@@ -65,8 +65,8 @@ textarea {
   border: white solid 1px;
   margin: 0 auto;
   margin-top: 19px;
-  width: 300px;
-  height: 200px;
+  width: 70vw;
+  height: 40vw;
 }
 .button {
   margin: 0 auto;
