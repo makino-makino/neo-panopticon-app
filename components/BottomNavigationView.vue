@@ -3,44 +3,34 @@
     <div class="header-dummy"></div>
 
     <div class="footer l-box is-center">
-      <nuxt-link to="/localTL">
-        <div class="pure-button content-button">
-          <img src="/images/home.png" class="content-button-img" />
-        </div>
+      <nuxt-link to="/localTL" class="pure-button content-button">
+        <img src="/images/home.png" class="content-button-img" />
       </nuxt-link>
-      <nuxt-link to="/globalTL">
-        <div class="pure-button content-button">
-          <img src="/images/earth.png" class="content-button-img" />
-        </div>
+      <nuxt-link to="/globalTL" class="pure-button content-button">
+        <img src="/images/earth.png" class="content-button-img" />
       </nuxt-link>
 
-      <nuxt-link to="/notification">
-        <div class="pure-button content-button">
-          <img src="/images/bell.png" class="content-button-img" />
-        </div>
+      <nuxt-link to="/notification" class="pure-button content-button">
+        <img src="/images/bell.png" class="content-button-img" />
       </nuxt-link>
-      <nuxt-link to="/newPost">
-        <div class="pure-button content-button">
-          <img src="/images/pen.png" class="content-button-img" />
-        </div>
+      <nuxt-link to="/newPost" class="pure-button content-button">
+        <img src="/images/pen.png" class="content-button-img" />
       </nuxt-link>
 
-      <nuxt-link to="/setting">
-        <div class="pure-button content-button">
-          <img src="/images/setting.png" class="content-button-img" />
-        </div>
+      <nuxt-link to="/setting" class="pure-button content-button">
+        <img src="/images/setting.png" class="content-button-img" />
       </nuxt-link>
     </div>
   </div>
 </template>
 
-<style>
+<style scoped>
 /*
  * -- LAYOUT STYLES --
  * These are some useful classes which I will need
  */
 .l-box {
-  padding: 1em;
+  padding: 0.4em 0px;
 }
 
 .l-box-lrg {
@@ -62,12 +52,13 @@
 
 .content-button {
   background: rgb(48, 48, 48);
+  padding: 0.2em 0.5em;
 }
 
 .content-button-img {
   width: 30px;
   height: 30px;
-  display: inline-block;
+  display: block;
 }
 
 .header-dummy {

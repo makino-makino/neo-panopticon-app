@@ -139,6 +139,7 @@ export default {
 
 .content-button {
   background: rgb(48, 48, 48);
+  padding: 0.2em 0.5em;
 }
 
 .content-button-img {
