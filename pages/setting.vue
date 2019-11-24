@@ -64,7 +64,7 @@ export default {
         localStorage.client = ""
         localStorage.uid = ""
         localStorage.userId = ""
-        location.href = "/login";
+        this.$router.push('login')
       }
     }
   }

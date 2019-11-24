@@ -11,12 +11,14 @@
 </template>
 
 <script>
-import NavigationBar from "~/components/NavigationBar.vue";
 import axios from "axios";
 
 const LOGIN_API = "/api/auth/sign_in";
 
 export default {
+  fetch({ store }) {
+    return store.commit("setNavigationBar", "ログイン");
+  },
   components: {},
   data() {
     return {

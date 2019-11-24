@@ -16,7 +16,23 @@ export default {
     NavigationBar,
     BottomNavigationView
   },
-  computed: mapState(["title"])
+  computed: mapState(["title"]),
+  watch: {
+    $route: function(e) {
+      if (
+        localStorage.access_token == "" &&
+        localStorage.client == "" &&
+        localStorage.uid == "" &&
+        localStorage.userId == ""
+      ) {
+        console.log(e);
+        const arr = ["login", "register"];
+        if (arr.indexOf(e.name) < 0) {
+          this.$router.push("login");
+        }
+      }
+    }
+  }
 };
 </script>
 
