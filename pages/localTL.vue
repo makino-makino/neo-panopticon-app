@@ -17,7 +17,7 @@ export default {
   },
   mounted() {
     var userId = localStorage.userId;
-    this.query = `tl=local&followers=${userId}`;
+    this.query = "tl=local";
     this.loaded = true;
   },
   head() {
