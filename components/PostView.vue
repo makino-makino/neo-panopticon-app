@@ -3,7 +3,9 @@
     <div class="post">
       <div class="user">
         <div class="user-icon-block">
-          <img src="/images/people.png" class="user-icon" />
+          <nuxt-link :to="{ name: 'users-id', params: { id: user.id } }">
+            <img src="/images/people.png" class="user-icon" />
+          </nuxt-link>
         </div>
 
         <div class="user-name-block">
