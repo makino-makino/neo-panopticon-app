@@ -1,38 +1,30 @@
 <template>
   <div>
-      <UserListView v-bind:query="query"/>
+    <UserListView v-bind:query="query" />
   </div>
 </template>
 
 <script>
-
-import UserListView from '~/components/UserListView.vue'
-import axios from 'axios'
-
+import UserListView from "~/components/UserListView.vue";
+import axios from "axios";
 
 export default {
   components: {
     UserListView
   },
-  validate ({ params }) {
-    return /^\d+$/.test(params.id)
+  validate({ params }) {
+    return /^\d+$/.test(params.id);
   },
-  asyncData ({ params }) {
+  asyncData({ params }) {
     return {
       query: `followee=${params.id}`
-    }
+    };
   },
   data() {
-    return {
-    }
+    return {};
   },
-  methods: {
-    
-  }
-}
-
-
-
+  methods: {}
+};
 </script>
 
 <style>
