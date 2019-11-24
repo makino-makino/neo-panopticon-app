@@ -21,6 +21,7 @@
       <transition name="pages">
         <profile v-if="currentSelecting=='profile'" @closechild="close" />
         <mail v-if="currentSelecting=='email'" @closechild="close" />
+        <password v-if="currentSelecting=='password'" @closechild="close" />
       </transition>
     </div>
   </div>
@@ -30,10 +31,12 @@
 // javascript
 import profile from "~/components/setting/profile.vue";
 import mail from "~/components/setting/mail.vue";
+import password from "~/components/setting/password.vue";
 export default {
   components: {
     profile,
-    mail
+    mail,
+    password
   },
   fetch({ store }) {
     return store.commit("setNavigationBar", "設定");
