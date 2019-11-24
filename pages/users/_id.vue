@@ -7,7 +7,12 @@
       <p>{{ user.icon }}</p>
       <p>{{ user.evaluation }}</p>
 
-      <button v-on:click="submitFollowing">フォロー</button>
+      <div v-if="hasFollowed">
+        <button v-on:click="submitFollowing">フォローを解除</button>
+      </div>
+      <div v-else>
+        <button v-on:click="submitFollowing">フォロー</button>
+      </div>
     </div>
   </div>
 </template>
@@ -36,7 +41,8 @@ export default {
         bio: "",
         icon: "",
         evaluation: ""
-      }
+      },
+      hasFollowed: false
     };
   },
   async mounted() {
@@ -52,6 +58,15 @@ export default {
     });
 
     this.user = resp.data;
+
+    resp = await axios.get(
+      `${FOLLOWINGS_API}/has_followed/?from_id=${localStorage.userId}&to_id=${this.userId}`,
+      {
+        headers: HEADERS
+      }
+    );
+
+    this.hasFollowed = resp.data.has_followed;
   },
 
   methods: {
@@ -74,7 +89,7 @@ export default {
         }
       );
 
-      this.following = resp.data;
+      this.hasFollowed = resp.data.from_id !== null;
     }
   }
 };
