@@ -3,21 +3,55 @@
     <NavigationBar :backbutton="true" :title="'メールアドレス変更'" @closemenu="close" />
     <div class="contents">
       <div class="titletext">メールアドレス</div>
-      <input type="text" />
-      <button class="save">保存</button>
+      <input v-model="email" type="text" />
+      <button class="save" v-on:click="update">保存</button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
+const UPDATE_API = "/api/auth";
+
 import NavigationBar from "~/components/NavigationBar.vue";
 export default {
+  data() {
+    return {
+      email: ""
+    };
+  },
   components: {
     NavigationBar
   },
   methods: {
     close() {
       this.$emit("closechild");
+    },
+    async update(e) {
+      try {
+        const HEADERS = {
+          Accept: "application/json",
+          "access-token": localStorage.access_token,
+          client: localStorage.client,
+          uid: localStorage.uid
+        };
+        var resp = await axios.put(
+          UPDATE_API,
+          {
+            email: this.email
+          },
+          {
+            headers: HEADERS
+          }
+        );
+
+        // TODO: ちゃんと次の場所にジャンプさせる
+        localStorage.uid = resp.headers.uid;
+        this.close()
+      } catch (e) {
+        console.log(e);
+      }
     }
   }
 };
