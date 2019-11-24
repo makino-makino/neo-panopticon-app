@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="profileBackGround">
+      <canvas id="canvas" height="600" width="600"></canvas>
       <div v-if="amI">
         <img src="/images/people.png" alt class="profileicon" />
         <p class="name">{{ user.name }}</p>
@@ -68,8 +69,16 @@ export default {
 
 <style lang="scss">
 /* css */
+#canvas {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+}
 .profileBackGround {
   // height: 400px;
+  position: relative;
   width: 100%;
   background-color: rgb(31, 28, 41);
   padding-top: 100px;
