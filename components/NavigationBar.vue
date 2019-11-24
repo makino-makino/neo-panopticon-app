@@ -4,7 +4,7 @@
       <button v-if="backbutton==true" @click="close">
         <img src="/images/backbutton.svg" alt />
       </button>
-      <a class="pure-menu-heading" href>{{ title }}</a>
+      <div class="pure-menu-heading" href>{{ title }}</div>
     </div>
   </div>
 </template>
