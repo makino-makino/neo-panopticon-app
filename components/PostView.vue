@@ -71,7 +71,7 @@ export default {
 
       var resp = await axios.get(POSTS_API + this.postId, { headers: HEADERS });
 
-      this.evaluation = Math.round(resp.data.evaluation * 100) / 10;
+      this.evaluation = Math.round(resp.data.evaluation * 10) / 10;
     }
   }
 };
