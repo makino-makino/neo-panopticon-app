@@ -12,6 +12,9 @@ import axios from "axios";
 const POSTS_API = "/api/posts";
 
 export default {
+  fetch({ store }) {
+    return store.commit("setNavigationBar", "新しい投稿");
+  },
   components: {},
   data() {
     return {

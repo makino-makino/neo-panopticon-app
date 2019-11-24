@@ -9,6 +9,9 @@ import PostListView from "~/components/PostListView.vue";
 import axios from "axios";
 
 export default {
+  fetch({ store }) {
+    return store.commit("setNavigationBar", "ローカル");
+  },
   components: {
     PostListView
   },

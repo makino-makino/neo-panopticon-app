@@ -1,9 +1,9 @@
 export const state = () => ({
-  titleItem: null
+  title: null
 })
 
 export const mutations = {
-  setNavigationBar(state, titleItem) {
-    state.titleItem = titleItem
+  setNavigationBar(state, title) {
+    state.title = title
   },
 }

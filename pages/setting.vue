@@ -1,40 +1,88 @@
 <template>
   <!-- html -->
   <div>
-    <h2>tests</h2>
-    <p>
-      e-mail:
-      <input type="text" v-model="email" />
-    </p>
-    <p>
-      pass:
-      <input type="text" v-model="password" />
-    </p>
-    <button v-on:click="submitEmail">送信する</button>
+    <div class="setting_menus">
+      <button class="aSetting" v-on:click="currentSelecting='profile'">
+        プロフィール
+        <div class="arrow">></div>
+      </button>
+      <button class="aSetting" v-on:click="currentSelecting='email'">
+        メールアドレス
+        <div class="arrow">></div>
+      </button>
+      <button class="aSetting" v-on:click="currentSelecting='password'">
+        パスワード
+        <div class="arrow">></div>
+      </button>
+      <button class="aSetting" v-on:click="currentSelecting='logout'">
+        ログアウト
+        <div class="arrow">></div>
+      </button>
+      <transition name="pages">
+        <profile v-if="currentSelecting=='profile'" @closechild="close" />
+      </transition>
+    </div>
   </div>
 </template>
 
 <script>
 // javascript
+import profile from "~/components/setting/profile.vue";
 export default {
+  components: {
+    profile,
+  },
   fetch({ store }) {
-    return store.commit("setNavigationBar", {title:"Setting",leftTitle:"left",leftHref:"/registerPage",rightTitle:"right",rightHref:"/registerPage"});
+    return store.commit("setNavigationBar", "設定");
   },
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      currentSelecting: ""
     };
   },
   methods: {
     submitEmail: function(event) {
       alert(this.email);
       alert(this.password);
+    },
+    close(){
+      this.currentSelecting = ""
     }
   }
 };
 </script>
 
-<style>
+<style lang="scss">
 /* css */
+.setting_menus {
+  margin: 0 3%;
+  margin-top: 20px;
+  .aSetting {
+    padding: 0 20px;
+    border-radius: 10px;
+    background-color: #cccccc;
+    text-decoration: none;
+    font-size: 16px;
+    width: 100%;
+    line-height: 100%;
+    color: black;
+    line-height: 57px;
+    display: block;
+    margin: 10px 0;
+    text-align: left;
+    .arrow {
+      display: inline;
+      float: right;
+    }
+  }
+}
+.pages-enter-active, .pages-leave-active {
+  transition: all  .4s;
+}
+.pages-enter, .pages-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  // opacity: 0;
+  transform:translateX(100vw);
+}
 </style>

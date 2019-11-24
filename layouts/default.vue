@@ -1,10 +1,6 @@
 <template>
   <div>
-    <NavigationBar
-      :titleItem="{
-        title: 'title'
-      }"
-    />
+    <NavigationBar :title="title" />
     <nuxt />
     <BottomNavigationView />
   </div>
@@ -20,7 +16,7 @@ export default {
     NavigationBar,
     BottomNavigationView
   },
-  computed: mapState(["titleItem"])
+  computed: mapState(["title"])
 };
 </script>
 
