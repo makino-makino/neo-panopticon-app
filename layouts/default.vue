@@ -2,7 +2,7 @@
   <div>
     <NavigationBar :title="title" />
     <nuxt />
-    <BottomNavigationView />
+    <BottomNavigationView v-if="hiddenBottom" />
   </div>
 </template>
 
@@ -16,7 +16,25 @@ export default {
     NavigationBar,
     BottomNavigationView
   },
-  computed: mapState(["title"])
+  computed: mapState(["title",'hiddenBottom']),
+  watch: {
+    $route: function(e) {
+      if (
+        localStorage.access_token == "" &&
+        localStorage.client == "" &&
+        localStorage.uid == "" &&
+        localStorage.userId == ""
+      ) {
+        const arr = ["login", "register"];
+        if (arr.indexOf(e.name) < 0) {
+          this.$router.push("login");
+        }
+        this.$store.commit("setBottomHidden", false);
+      }else{
+        this.$store.commit("setBottomHidden", true);
+      }
+    }
+  }
 };
 </script>
 

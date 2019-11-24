@@ -53,8 +53,19 @@ export default {
       alert(this.email);
       alert(this.password);
     },
-    close(){
-      this.currentSelecting = ""
+    close() {
+      this.currentSelecting = "";
+    }
+  },
+  watch: {
+    currentSelecting: function(newValue) {
+      if (newValue == "logout"){
+        localStorage.access_token = ""
+        localStorage.client = ""
+        localStorage.uid = ""
+        localStorage.userId = ""
+        this.$router.push('login')
+      }
     }
   }
 };
@@ -84,11 +95,12 @@ export default {
     }
   }
 }
-.pages-enter-active, .pages-leave-active {
-  transition: all  .4s;
+.pages-enter-active,
+.pages-leave-active {
+  transition: all 0.4s;
 }
 .pages-enter, .pages-leave-to /* .fade-leave-active below version 2.1.8 */ {
   // opacity: 0;
-  transform:translateX(100vw);
+  transform: translateX(100vw);
 }
 </style>

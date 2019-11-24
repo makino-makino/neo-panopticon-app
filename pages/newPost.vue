@@ -42,7 +42,7 @@ export default {
           }
         );
 
-        location.href = "/localTL";
+        this.$router.push('localTL');
       } else {
         alert("投稿を入力してください");
       }

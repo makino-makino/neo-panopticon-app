@@ -46,11 +46,10 @@ export default {
         localStorage.access_token = resp.headers["access-token"];
         localStorage.client = resp.headers.client;
         localStorage.uid = resp.headers.uid;
-
         localStorage.userId = resp.data.data.id;
 
         // TODO: ちゃんと次の場所にジャンプさせる
-        location.href = "/localTL";
+        this.$router.push('localTL')
       } catch (e) {
         console.log(e);
       }

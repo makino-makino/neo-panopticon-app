@@ -9,26 +9,71 @@
       </div>
       <div class="name">
         <div class="boxname">名前</div>
-        <input type="text" />
+        <input type="text" v-model="user.name" />
       </div>
       <div class="detail">
         <div class="boxname">自己紹介文</div>
-        <textarea></textarea>
+        <textarea v-model="user.bio"></textarea>
       </div>
-      <button class="save">保存</button>
+      <button class="save" v-on:click="update">保存</button>
     </div>
   </div>
 </template>
 
 <script>
 import NavigationBar from "~/components/NavigationBar.vue";
+import axios from "axios";
+const UPDATE_API = "/api/auth";
+const USER_API = "/api/users/" + localStorage.userId;
 export default {
+  data() {
+    return {
+      user: {}
+    };
+  },
   components: {
     NavigationBar
+  },
+  async mounted() {
+    const HEADERS = {
+      Accept: "application/json",
+      "access-token": localStorage.access_token,
+      client: localStorage.client,
+      uid: localStorage.uid
+    };
+    var resp = await axios.get(`${USER_API}`, {
+      headers: HEADERS
+    });
+    this.user = resp.data;
   },
   methods: {
     close() {
       this.$emit("closechild");
+    },
+    async update(e) {
+      const HEADERS = {
+        Accept: "application/json",
+        "access-token": localStorage.access_token,
+        client: localStorage.client,
+        uid: localStorage.uid
+      };
+      try {
+        var resp = await axios.put(
+          UPDATE_API,
+          {
+            name: this.user.name,
+            bio: this.user.bio
+          },
+          {
+            headers: HEADERS
+          }
+        );
+
+        // TODO: ちゃんと次の場所にジャンプさせる
+        this.close();
+      } catch (e) {
+        console.log(e);
+      }
     }
   }
 };
