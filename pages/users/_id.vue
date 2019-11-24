@@ -2,7 +2,7 @@
   <div>
     <div class="profileBackGround">
       <canvas id="canvas" height="600" width="600"></canvas>
-      <div v-if="amI">
+      <div>
         <img src="/images/people.png" alt class="profileicon" />
         <p class="name">{{ user.name }}</p>
         <p class="bio">{{ user.bio }}</p>
@@ -10,8 +10,8 @@
         <!-- <p>{{ user.icon }}</p> -->
         <!-- <p>{{ user.evaluation }}</p> -->
       </div>
-      <div v-else>
-        <FollowButton v-bind:userId="user.id" />
+      <div v-if="!amI">
+        <FollowButton v-bind:userId="user.id" class="followbutton" />
       </div>
     </div>
     <div v-if="loaded">
@@ -40,9 +40,13 @@ export default {
       userId: `${params.id}`
     };
   },
+  computed: {
+    amI: function() {
+      return String(localStorage.userId) == String(this.user.id);
+    }
+  },
   data() {
     return {
-      amI: true,
       loaded: false,
       user: {
         id: "",
@@ -82,6 +86,7 @@ export default {
   top: 0;
   bottom: 0;
   height: 100%;
+  z-index: -1;
 }
 .profileBackGround {
   // height: 400px;
@@ -106,6 +111,11 @@ export default {
     line-height: 0.9rem;
     width: 50vw;
     margin: 0 auto;
+  }
+  .followbutton{
+    margin-top: 10px;
+    font-size: 20px;
+    text-align: center;
   }
 }
 </style>

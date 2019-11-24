@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="first">
     <div class="home-menu">
       <button v-if="backbutton==true" @click="close">
         <img src="/images/backbutton.svg" alt />
@@ -26,6 +26,12 @@ export default {
 </script>
 
 <style lang="scss">
+.first {
+  top: 0;
+  /* width: 100%; */
+  position: sticky;
+  z-index: 9999;
+}
 .home-menu {
   /* padding: 0.5em; */
   text-align: center;

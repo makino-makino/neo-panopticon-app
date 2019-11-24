@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div v-if="hasFollowed">
+    <template v-if="hasFollowed">
       <button v-on:click="submitFollowing">フォローを解除</button>
-    </div>
-    <div v-else>
+    </template>
+    <template v-else>
       <button v-on:click="submitFollowing">フォロー</button>
-    </div>
+    </template>
   </div>
 </template>
 

@@ -110,6 +110,7 @@ export default {
   background: rgb(48, 48, 48);
   padding: 0.2em 0.5em;
   display: inline-flex;
+  opacity: 1;
 }
 
 .content-button-img {
