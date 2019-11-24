@@ -47,16 +47,18 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .content-button {
   background: rgb(48, 48, 48);
-  padding: 0.2em 0.5em;
+  padding: 0.4em 0.7em;
 }
 
 .content-button-img {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   display: block;
 }
 
