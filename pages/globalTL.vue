@@ -16,14 +16,7 @@ export default {
   },
   head() {
     return {
-      title: `Global TL`,
-      meta: [
-        {
-          hid: "viewport",
-          name: "viewport",
-          content: ""
-        }
-      ]
+      title: `Global TL`
     };
   },
   data: () => {

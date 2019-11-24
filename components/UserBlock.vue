@@ -53,36 +53,30 @@ export default {
 }
 
 .user {
-  margin: 20px;
-
-  height: 180px;
-  width: 20%;
-
   text-align: left;
   display: inline-block;
-
-  /* background: #ffffff; */
 }
 
 .user-name {
   color: #aaa;
   font-size: 25px;
+  line-height: 91px;
+  margin: 0;
 }
 
 .user-name-block {
-  float: left;
+  display: flex;
 }
 
 .user-icon-block {
   margin: 20px;
-
-  float: left;
   /* background: royalblue; */
+  float: left;
 }
 
 .user-icon {
-  height: 70px;
-  width: 70px;
+  height: 40px;
+  width: 40px;
 }
 
 /*

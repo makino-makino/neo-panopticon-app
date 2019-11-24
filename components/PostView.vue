@@ -4,22 +4,16 @@
       <UserBlock v-bind:userId="userId" />
       <div class="post-content-block">
         <p class="post-content">{{ content }}</p>
-        <div class="content-buttons-block">
-          <div
-            v-on:click="submitEvaluation(true)"
-            class="pure-button content-button"
-          >
-            <img src="/images/+ev.png" class="content-button-img" />
-          </div>
-          <div
-            v-on:click="submitEvaluation(false)"
-            class="pure-button content-button"
-          >
-            <img src="/images/-ev.png" class="content-button-img" />
-          </div>
-          <div class="pure-button content-button  pure-button-disabled">
-            <p class="content-button-img">{{ evaluation }}</p>
-          </div>
+      </div>
+      <div class="content-buttons-block">
+        <div v-on:click="submitEvaluation(true)" class="pure-button content-button">
+          <img src="/images/+ev.png" class="content-button-img" />
+        </div>
+        <div v-on:click="submitEvaluation(false)" class="pure-button content-button">
+          <img src="/images/-ev.png" class="content-button-img" />
+        </div>
+        <div class="pure-button content-button pure-button-disabled">
+          <p class="content-button-img">{{ evaluation }}</p>
         </div>
       </div>
     </div>
@@ -82,70 +76,39 @@ export default {
 .post {
   background: #414141;
   margin: 10px;
-}
-
-.user {
-  margin: 20px;
-
-  height: 180px;
-  width: 20%;
-
-  text-align: left;
-  display: inline-block;
-
-  /* background: #ffffff; */
-}
-
-.user-name {
-  color: #aaa;
-  font-size: 25px;
-}
-
-.user-name-block {
-  float: left;
-}
-
-.user-icon-block {
-  margin: 20px;
-
-  float: left;
-  /* background: royalblue; */
-}
-
-.user-icon {
-  height: 70px;
-  width: 70px;
+  padding-bottom: 10px;
 }
 
 .post-content-block {
-  float: right;
-
-  height: 180px;
-  width: 70%;
-
-  padding-right: 10%;
+  padding: 0 16px;
 }
 
 .post-content {
-  font-size: 30px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  font-size: 17px;
+  margin: 0;
+  line-height: 25px;
 }
 
 .content-buttons-block {
+  margin-right: 10px;
+  margin-left: auto;
+  display: block;
   text-align: right;
-  margin: 20px;
 }
 
 .content-button {
   background: rgb(48, 48, 48);
   padding: 0.2em 0.5em;
+  display: inline-flex;
 }
 
 .content-button-img {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   display: inline-block;
+  margin: 0;
+  font-size: 20px;
+  line-height: 100%;
 }
 
 .footer-button {

@@ -19,14 +19,7 @@ export default {
   },
   head() {
     return {
-      title: `Local TL`,
-      meta: [
-        {
-          hid: "viewport",
-          name: "viewport",
-          content: ""
-        }
-      ]
+      title: `Local TL`
     };
   },
   data() {
