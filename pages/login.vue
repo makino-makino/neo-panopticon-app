@@ -44,17 +44,21 @@ export default {
 
   methods: {
     async login(e) {
-      var resp = await axios.post(LOGIN_API, {
-        email: this.email,
-        password: this.password
-      });
+      try {
+        var resp = await axios.post(LOGIN_API, {
+          email: this.email,
+          password: this.password
+        });
 
-      localStorage.access_token = resp.headers["access-token"];
-      localStorage.client = resp.headers.client;
-      localStorage.uid = resp.headers.uid;
+        localStorage.access_token = resp.headers["access-token"];
+        localStorage.client = resp.headers.client;
+        localStorage.uid = resp.headers.uid;
 
-      localStorage.userId = resp.data.data.id;
-      this.$router.push("localTL");
+        localStorage.userId = resp.data.data.id;
+        this.$router.push("localTL");
+      } catch (e) {
+        console.log(e);
+      }
     }
   }
 };
