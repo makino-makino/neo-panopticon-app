@@ -58,7 +58,6 @@ export default {
         uid: localStorage.uid
       };
       try {
-        console.log(this.user.name);
         var resp = await axios.put(
           UPDATE_API,
           {
