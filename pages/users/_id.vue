@@ -7,23 +7,21 @@
       <p>{{ user.icon }}</p>
       <p>{{ user.evaluation }}</p>
 
-      <div v-if="hasFollowed">
-        <button v-on:click="submitFollowing">フォローを解除</button>
-      </div>
-      <div v-else>
-        <button v-on:click="submitFollowing">フォロー</button>
-      </div>
+      <FollowButton v-bind:userId="user.id" />
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import FollowButton from "~/components/FollowButton.vue";
 
 const USERS_API = "/api/users";
-const FOLLOWINGS_API = "/api/followings";
 
 export default {
+  components: {
+    FollowButton
+  },
   validate({ params }) {
     return /^\d+$/.test(params.id);
   },
@@ -41,8 +39,7 @@ export default {
         bio: "",
         icon: "",
         evaluation: ""
-      },
-      hasFollowed: false
+      }
     };
   },
   async mounted() {
@@ -58,39 +55,6 @@ export default {
     });
 
     this.user = resp.data;
-
-    resp = await axios.get(
-      `${FOLLOWINGS_API}/has_followed/?from_id=${localStorage.userId}&to_id=${this.userId}`,
-      {
-        headers: HEADERS
-      }
-    );
-
-    this.hasFollowed = resp.data.has_followed;
-  },
-
-  methods: {
-    async submitFollowing() {
-      const HEADERS = {
-        Accept: "application/json",
-        "access-token": localStorage.access_token,
-        client: localStorage.client,
-        uid: localStorage.uid
-      };
-
-      var resp = await axios.post(
-        FOLLOWINGS_API,
-        {
-          from_id: localStorage.userId,
-          to_id: this.userId
-        },
-        {
-          headers: HEADERS
-        }
-      );
-
-      this.hasFollowed = resp.data.from_id !== null;
-    }
   }
 };
 </script>
