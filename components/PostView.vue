@@ -45,6 +45,10 @@ export default {
   components: {
     UserBlock
   },
+  mounted() {
+    console.log(this.evaluation);
+    this.evaluation = Math.round(this.evaluation * 10) / 10;
+  },
   methods: {
     async submitEvaluation(isPositive) {
       const HEADERS = {
@@ -67,7 +71,7 @@ export default {
 
       var resp = await axios.get(POSTS_API + this.postId, { headers: HEADERS });
 
-      this.evaluation = resp.data.evaluation;
+      this.evaluation = Math.round(resp.data.evaluation * 100) / 10;
     }
   }
 };
