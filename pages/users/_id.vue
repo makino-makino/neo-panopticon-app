@@ -7,7 +7,7 @@
       <p>{{ user.icon }}</p>
       <p>{{ user.evaluation }}</p>
 
-      <!-- <button v-on:click="submitFollowing"></button> -->
+      <button v-on:click="submitFollowing">フォロー</button>
     </div>
   </div>
 </template>
@@ -16,6 +16,7 @@
 import axios from "axios";
 
 const USERS_API = "/api/users";
+const FOLLOWINGS_API = "/api/followings";
 
 export default {
   validate({ params }) {
@@ -53,7 +54,29 @@ export default {
     this.user = resp.data;
   },
 
-  methods: {}
+  methods: {
+    async submitFollowing() {
+      const HEADERS = {
+        Accept: "application/json",
+        "access-token": localStorage.access_token,
+        client: localStorage.client,
+        uid: localStorage.uid
+      };
+
+      var resp = await axios.post(
+        FOLLOWINGS_API,
+        {
+          from_id: localStorage.userId,
+          to_id: this.userId
+        },
+        {
+          headers: HEADERS
+        }
+      );
+
+      this.following = resp.data;
+    }
+  }
 };
 </script>
 
