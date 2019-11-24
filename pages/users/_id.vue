@@ -11,7 +11,7 @@
         <!-- <p>{{ user.evaluation }}</p> -->
       </div>
       <div v-if="!amI">
-        <FollowButton v-bind:userId="user.id" class="followbutton" />
+        <FollowButton v-bind:userId="userId" class="followbutton" />
       </div>
     </div>
     <div v-if="loaded">
@@ -112,7 +112,7 @@ export default {
     width: 50vw;
     margin: 0 auto;
   }
-  .followbutton{
+  .followbutton {
     margin-top: 10px;
     font-size: 20px;
     text-align: center;

@@ -18,11 +18,11 @@ export default {
   props: {
     userId: Number
   },
-  asyncData({ params }) {
-    return {
-      userId: `${params.id}`
-    };
-  },
+  // asyncData({ params }) {
+  //   return {
+  //     userId: `${params.id}`
+  //   };
+  // },
 
   async mounted() {
     const HEADERS = {
