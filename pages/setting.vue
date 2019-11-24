@@ -11,7 +11,6 @@
       <input type="text" v-model="password" />
     </p>
     <button v-on:click="submitEmail">送信する</button>
-    あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>あ<br>
   </div>
 </template>
 

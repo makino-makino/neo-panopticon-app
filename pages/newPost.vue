@@ -64,7 +64,8 @@ textarea {
   border-radius: 18px;
   color: black;
   font-size: 1rem;
-  padding: 0 18px;
+  padding: 15px 18px;
+  line-height: 21px;
 }
 .button {
   margin-right: 18px;
