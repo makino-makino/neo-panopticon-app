@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h2>新しい投稿を作成する</h2>
+  <div class="content">
     <textarea v-model="content" placeholder="新しい投稿"></textarea>
     <button class="pure-button button" v-on:click="submit">投稿</button>
   </div>
@@ -41,8 +40,8 @@ export default {
         );
 
         location.href = "/localTL";
-      }else{
-        alert("投稿を入力してください")
+      } else {
+        alert("投稿を入力してください");
       }
     }
   }
@@ -51,14 +50,8 @@ export default {
 
 <style lang="scss">
 /* css */
-h2 {
-  font-size: 10rem;
-  font-size: 1.5rem;
-  letter-spacing: -2px;
-  width: 300px;
-  margin: 0 auto;
-  color: white;
-  margin-top: 35px;
+.content {
+  padding: 0 5vw;
 }
 textarea {
   display: block;
@@ -66,14 +59,23 @@ textarea {
   margin: 0 auto;
   margin-top: 19px;
   width: 90vw;
-  height: 80vh;
-  background-color: #D8D8D8;
+  height: 57vh;
+  background-color: #d8d8d8;
   border-radius: 18px;
   color: black;
-
+  font-size: 1rem;
+  padding: 0 18px;
 }
 .button {
-  margin: 0 auto;
+  margin-right: 18px;
+  margin-left: auto;
+  height: 48px;
+  width: 100px;
+  padding: 0px;
+  border-radius: 5px;
+  margin-top: 19px;
   display: block;
+  font-size: 23px;
+  background-color: #777777;
 }
 </style>

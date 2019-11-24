@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="header-dummy"></div>
-
     <div class="footer l-box is-center">
       <nuxt-link to="/localTL" class="pure-button content-button">
         <img src="/images/home.png" class="content-button-img" />
