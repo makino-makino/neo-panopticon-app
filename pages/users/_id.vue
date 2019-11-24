@@ -14,7 +14,9 @@
         <FollowButton v-bind:userId="user.id" />
       </div>
     </div>
-    <PostListView v-bind:query="'tl=global'" />
+    <div v-if="loaded">
+      <PostListView v-bind:query="query" />
+    </div>
   </div>
 </template>
 
@@ -41,13 +43,15 @@ export default {
   data() {
     return {
       amI: true,
+      loaded: false,
       user: {
         id: "",
         name: "",
         bio: "",
         icon: "",
         evaluation: ""
-      }
+      },
+      query: ""
     };
   },
   async mounted() {
@@ -63,6 +67,9 @@ export default {
     });
 
     this.user = resp.data;
+
+    this.loaded = true;
+    this.query = `tl=user&user_id=${localStorage.userId}`;
   }
 };
 </script>

@@ -6,10 +6,16 @@
         <p class="post-content">{{ content }}</p>
       </div>
       <div class="content-buttons-block">
-        <div v-on:click="submitEvaluation(true)" class="pure-button content-button">
+        <div
+          v-on:click="submitEvaluation(true)"
+          class="pure-button content-button"
+        >
           <img src="/images/+ev.png" class="content-button-img" />
         </div>
-        <div v-on:click="submitEvaluation(false)" class="pure-button content-button">
+        <div
+          v-on:click="submitEvaluation(false)"
+          class="pure-button content-button"
+        >
           <img src="/images/-ev.png" class="content-button-img" />
         </div>
         <div class="pure-button content-button pure-button-disabled">
