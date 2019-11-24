@@ -49,7 +49,7 @@ export default {
         localStorage.userId = resp.data.data.id;
 
         // TODO: ちゃんと次の場所にジャンプさせる
-        location.href = "/localTL";
+        this.$router.push('localTL')
       } catch (e) {
         console.log(e);
       }
