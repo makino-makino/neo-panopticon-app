@@ -6,7 +6,7 @@
       <UserBlock v-bind:userId="userId" />
       <div class="post-content-block">
         <p class="post-content">{{ content }}</p>
-        <p class="post-content">{{ time }}</p>
+        <p class="timepostcontet">{{ time }}</p>
       </div>
       <div class="content-buttons-block">
         <div
@@ -106,6 +106,13 @@ export default {
   font-size: 17px;
   margin: 0;
   line-height: 25px;
+}
+
+.timepostcontet{
+  font-size: 17px;
+  margin: 0;
+  line-height: 25px;
+  text-align: right;
 }
 
 .content-buttons-block {
