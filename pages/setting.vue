@@ -2,26 +2,29 @@
   <!-- html -->
   <div>
     <div class="setting_menus">
-      <button class="aSetting" v-on:click="currentSelecting='profile'">
-        プロフィール
+      <nuxt-link :to="{ name: 'users-id', params: { id: userId } }">
+        <button class="aSetting">プロフィールページへ</button>
+      </nuxt-link>
+      <button class="aSetting" v-on:click="currentSelecting = 'profile'">
+        プロフィールの変更
+        <div class="arrow"></div>
+      </button>
+      <button class="aSetting" v-on:click="currentSelecting = 'email'">
+        メールアドレスの変更
         <div class="arrow">></div>
       </button>
-      <button class="aSetting" v-on:click="currentSelecting='email'">
-        メールアドレス
+      <button class="aSetting" v-on:click="currentSelecting = 'password'">
+        パスワードの変更
         <div class="arrow">></div>
       </button>
-      <button class="aSetting" v-on:click="currentSelecting='password'">
-        パスワード
-        <div class="arrow">></div>
-      </button>
-      <button class="aSetting" v-on:click="currentSelecting='logout'">
+      <button class="aSetting" v-on:click="currentSelecting = 'logout'">
         ログアウト
         <div class="arrow">></div>
       </button>
       <transition name="pages">
-        <profile v-if="currentSelecting=='profile'" @closechild="close" />
-        <mail v-if="currentSelecting=='email'" @closechild="close" />
-        <password v-if="currentSelecting=='password'" @closechild="close" />
+        <profile v-if="currentSelecting == 'profile'" @closechild="close" />
+        <mail v-if="currentSelecting == 'email'" @closechild="close" />
+        <password v-if="currentSelecting == 'password'" @closechild="close" />
       </transition>
     </div>
   </div>
@@ -45,8 +48,12 @@ export default {
     return {
       email: "",
       password: "",
-      currentSelecting: ""
+      currentSelecting: "",
+      userId: null
     };
+  },
+  mounted() {
+    this.userId = localStorage.userId;
   },
   methods: {
     submitEmail: function(event) {
@@ -59,12 +66,12 @@ export default {
   },
   watch: {
     currentSelecting: function(newValue) {
-      if (newValue == "logout"){
-        localStorage.access_token = ""
-        localStorage.client = ""
-        localStorage.uid = ""
-        localStorage.userId = ""
-        this.$router.push('login')
+      if (newValue == "logout") {
+        localStorage.access_token = "";
+        localStorage.client = "";
+        localStorage.uid = "";
+        localStorage.userId = "";
+        this.$router.push("login");
       }
     }
   }
