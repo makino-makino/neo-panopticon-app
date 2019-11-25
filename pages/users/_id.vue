@@ -3,7 +3,7 @@
     <div class="profileBackGround">
       <canvas id="canvas" height="600" width="600"></canvas>
       <div>
-        <img src="/images/people.png" alt class="profileicon" />
+        <img :src="user.icon" alt class="profileicon" />
         <p class="name">{{ user.name }}</p>
         <p class="bio">{{ user.bio }}</p>
         <!-- <p>{{ user.id }}</p> -->
@@ -69,6 +69,10 @@ export default {
     var resp = await axios.get(`${USERS_API}/${this.userId}`, {
       headers: HEADERS
     });
+    let aaa = "";
+    if (resp.data.icon == "" || resp.data.icon == null) {
+      resp.data.icon = "/images/people.png";
+    }
 
     this.user = resp.data;
 
