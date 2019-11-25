@@ -1,9 +1,12 @@
 <template>
   <div>
     <div class="post">
+      <!-- <input type="hidden" v-bind:value="userId" /> -->
+
       <UserBlock v-bind:userId="userId" />
       <div class="post-content-block">
         <p class="post-content">{{ content }}</p>
+        <p class="post-content">{{ time }}</p>
       </div>
       <div class="content-buttons-block">
         <div
@@ -39,14 +42,20 @@ export default {
     postId: Number,
     content: String,
     userId: Number,
-    createdAt: String,
+    updatedAt: String,
     evaluation: Number
   },
   components: {
     UserBlock
   },
+  data() {
+    return {
+      time: ""
+    };
+  },
   mounted() {
-    console.log(this.evaluation);
+    this.time = new Date(this.updatedAt).toLocaleString();
+
     this.evaluation = Math.round(this.evaluation * 10) / 10;
   },
   methods: {

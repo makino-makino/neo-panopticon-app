@@ -5,7 +5,7 @@
         v-bind:postId="post.id"
         v-bind:content="post.content"
         v-bind:userId="post.user_id"
-        v-bind:created_at="post.createdAt"
+        v-bind:updatedAt="post.updated_at"
         v-bind:evaluation="post.evaluation"
       />
     </div>
@@ -38,6 +38,7 @@ export default {
     });
 
     this.posts = resp.data;
+    console.log(this.posts);
   },
   data() {
     return {
