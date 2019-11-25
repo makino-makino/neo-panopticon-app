@@ -3,9 +3,16 @@
     <NavigationBar :backbutton="true" :title="'プロフィール'" @closemenu="close" />
     <div class="contents">
       <div class="image_change">
-        <button>
-          <img src="/images/people.png" alt />
+        <button @click="makino">
+          <img :src="user.icon" alt ref="images"/>
         </button>
+        <input
+          ref="inputme"
+          type="file"
+          accept="image/*"
+          style="display:none;"
+          @change="fileUpload($event)"
+        />
       </div>
       <div class="name">
         <div class="boxname">名前</div>
@@ -23,12 +30,15 @@
 <script>
 import NavigationBar from "~/components/NavigationBar.vue";
 import axios from "axios";
+import firebase from "~/plugins/firebase.js";
 const UPDATE_API = "/api/auth";
 const USER_API = "/api/users/" + localStorage.userId;
+// const storage = firebase.storage();
 export default {
   data() {
     return {
-      user: {}
+      user: {
+      }
     };
   },
   components: {
@@ -45,8 +55,38 @@ export default {
       headers: HEADERS
     });
     this.user = resp.data;
+    if (this.user.icon == "" || this.user.icon == null){
+      this.user.icon = '/images/people.png'
+    }
   },
   methods: {
+    async fileUpload(e) {
+      console.log(e);
+      const file = (e.target.files || e.dataTransfer.files)[0];
+      if (file) {
+        console.log(file);
+        const firestorage = firebase.storage();
+        try {
+          const ref = "public/";
+          const uploadTask = await firestorage
+            .ref(localStorage.userId + ".png")
+            .put(file)
+            .then(snapshot => {
+              // アップロード完了処理。URLを取得し、呼び出し元へ返す。
+              snapshot.ref.getDownloadURL().then(url => {
+                this.user.icon = url
+                this.$refs.images.src = url
+                console.log(this.user.icon)
+              });
+            });
+        } catch (error) {
+          return Promise.reject(error);
+        }
+      }
+    },
+    makino() {
+      this.$refs.inputme.click();
+    },
     close() {
       this.$emit("closechild");
     },
@@ -62,7 +102,8 @@ export default {
           UPDATE_API,
           {
             name: this.user.name,
-            bio: this.user.bio
+            bio: this.user.bio,
+            icon: this.user.icon
           },
           {
             headers: HEADERS

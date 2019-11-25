@@ -2,7 +2,7 @@
   <div class="user">
     <div class="user-icon-block">
       <nuxt-link :to="{ name: 'users-id', params: { id: user.id } }">
-        <img src="/images/people.png" class="user-icon" />
+        <img :src="user.icon" class="user-icon" />
       </nuxt-link>
     </div>
 
@@ -30,7 +30,10 @@ export default {
     };
 
     var resp = await axios.get(USERS_API + this.userId, { headers: HEADERS });
-
+    let aaa = "";
+    if (resp.data.icon == "" || resp.data.icon == null) {
+      resp.data.icon = "/images/people.png";
+    }
     this.user = resp.data;
   },
   data() {
