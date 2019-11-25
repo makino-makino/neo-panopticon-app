@@ -19,7 +19,7 @@ const USERS_API = "/api/users/";
 
 export default {
   props: {
-    userId: Number
+    userId: String
   },
   async mounted() {
     const HEADERS = {
@@ -63,7 +63,7 @@ export default {
 .user-name {
   color: #aaa;
   font-size: 25px;
-  line-height: 91px;
+  line-height: 30px;
   margin: 0;
 }
 

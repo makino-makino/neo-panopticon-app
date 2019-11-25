@@ -54,6 +54,7 @@ export default {
     var resp = await axios.get(`${USER_API}`, {
       headers: HEADERS
     });
+    console.log(this.user)
     this.user = resp.data;
     if (this.user.icon == "" || this.user.icon == null){
       this.user.icon = '/images/people.png'

@@ -41,7 +41,7 @@ export default {
   props: {
     postId: Number,
     content: String,
-    userId: Number,
+    userId: String,
     updatedAt: String,
     evaluation: Number
   },
