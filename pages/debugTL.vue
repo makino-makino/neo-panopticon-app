@@ -1,35 +1,31 @@
 <template>
   <div>
-    <PostListView v-if="loaded" v-bind:query="query" />
+    <PostListView v-bind:query="query" />
   </div>
 </template>
 
 <script>
+import NavigationBar from "~/components/NavigationBar.vue";
 import PostListView from "~/components/PostListView.vue";
 import axios from "axios";
 
 export default {
   fetch({ store }) {
-    return store.commit("setNavigationBar", "ローカル");
+    return store.commit("setNavigationBar", "グローバル");
   },
   components: {
+    NavigationBar,
     PostListView
-  },
-  mounted() {
-    var userId = localStorage.userId;
-    this.query = "tl=local";
-    this.loaded = true;
   },
   head() {
     return {
-      title: `Local TL`
+      title: `Debug TL`
     };
   },
-  data() {
+  data: () => {
     return {
       posts: [],
-      query: "",
-      loaded: false
+      query: ""
     };
   },
   methods: {}
