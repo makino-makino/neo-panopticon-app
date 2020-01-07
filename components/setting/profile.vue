@@ -32,7 +32,6 @@ import NavigationBar from "~/components/NavigationBar.vue";
 import axios from "axios";
 import firebase from "~/plugins/firebase.js";
 const UPDATE_API = "/api/auth";
-const USER_API = "/api/users/" + localStorage.userId;
 // const storage = firebase.storage();
 export default {
   data() {
@@ -45,12 +44,15 @@ export default {
     NavigationBar
   },
   async mounted() {
+    const USER_API = "/api/users/" + localStorage.userId;
+
     const HEADERS = {
       Accept: "application/json",
       "access-token": localStorage.access_token,
       client: localStorage.client,
       uid: localStorage.uid
     };
+    
     var resp = await axios.get(`${USER_API}`, {
       headers: HEADERS
     });

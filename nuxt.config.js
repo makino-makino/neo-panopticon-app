@@ -65,6 +65,7 @@ export default {
    */
   axios: {},
 
+  /*
   proxy: {
     "/api": {
       target: "http://api:3000/",
@@ -73,6 +74,7 @@ export default {
       }
     }
   },
+  */
   /*
    ** Build configuration
    */
