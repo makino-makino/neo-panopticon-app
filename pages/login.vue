@@ -20,15 +20,19 @@
           <input v-model="password" type="password" />
         </div>
       </div>
-      <input v-on:click="login" value="ログイン" type="button" class="submitbutton" />
+      <input
+        v-on:click="submit"
+        value="ログイン"
+        type="button"
+        class="submitbutton"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-
-const LOGIN_API = "/api/auth/sign_in";
+import { mapActions } from "vuex";
+import passwordVue from "../components/setting/password.vue";
 
 export default {
   fetch({ store }) {
@@ -43,22 +47,17 @@ export default {
   },
 
   methods: {
-    async login(e) {
+    async submit(e) {
       try {
-        var resp = await axios.post(LOGIN_API, {
+        await this.$store.dispatch("auth/login", {
           email: this.email,
           password: this.password
         });
-
-        localStorage.access_token = resp.headers["access-token"];
-        localStorage.client = resp.headers.client;
-        localStorage.uid = resp.headers.uid;
-
-        localStorage.userId = resp.data.data.id;
-        this.$router.push("localTL");
-      } catch (e) {
-        console.log(e);
+      } catch (error) {
+        alert(error);
       }
+
+      this.$router.push("localTL");
     }
   }
 };
