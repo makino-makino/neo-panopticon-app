@@ -24,8 +24,6 @@ export const actions = {
       password: password
     });
 
-    console.log(resp);
-
     localStorage.accessToken = resp.headers["access-token"];
     localStorage.client = resp.headers.client;
     localStorage.uid = resp.headers.uid;
