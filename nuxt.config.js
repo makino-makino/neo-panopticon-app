@@ -36,9 +36,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [
-    '~/plugins/firebase',
-  ],
+  plugins: ["@/plugins/firebase"],
   /*
    ** Nuxt.js dev-modules
    */
@@ -46,8 +44,6 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://bootstrap-vue.js.org
-    "bootstrap-vue/nuxt",
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
     "@nuxtjs/pwa",
@@ -65,16 +61,10 @@ export default {
    */
   axios: {},
 
-  /*
-  proxy: {
-    "/api": {
-      target: "http://api:3000/",
-      pathRewrite: {
-        "^/api/": "/"
-      }
-    }
+  env: {
+    BASE_URL: "http://localhost:3000"
   },
-  */
+
   /*
    ** Build configuration
    */
@@ -86,6 +76,20 @@ export default {
   },
 
   router: {
-    mode: 'hash'
+    mode: "hash",
+    middleware: "auth"
   }
+
+  // server: {
+  //   host: '0.0.0.0'
+  // },
+
+  // proxy: {
+  //   "/api": {
+  //     target: "http://api:3030/",
+  //     pathRewrite: {
+  //       "^/api/": "/"
+  //     }
+  //   }
+  // }
 };
