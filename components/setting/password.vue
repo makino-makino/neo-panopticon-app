@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import NavigationBar from "~/components/NavigationBar.vue";
+import NavigationBar from "~/components/NavigationBar";
 import axios from "axios";
 const AUTH_URI = "/api/auth/password";
 export default {

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import NotificationView from "~/components/notification/NotificationListView.vue";
+import NotificationView from "~/components/notification/NotificationListView";
 import axios from "axios";
 
 const NOTIFICATION_URI = "/notifications/";

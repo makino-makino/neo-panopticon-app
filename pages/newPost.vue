@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import NavigationBar from "~/components/NavigationBar.vue";
+import NavigationBar from "~/components/NavigationBar";
 import axios from "axios";
 
 const POSTS_URI = "/api/posts";

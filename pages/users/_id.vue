@@ -22,8 +22,8 @@
 
 <script>
 import axios from "axios";
-import FollowButton from "~/components/FollowButton.vue";
-import PostListView from "~/components/post/PostListView.vue";
+import FollowButton from "~/components/FollowButton";
+import PostListView from "~/components/post/PostListView";
 
 const USERS_URI = "/api/users";
 

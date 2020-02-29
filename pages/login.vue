@@ -27,7 +27,7 @@
 
 <script>
 import { mapActions } from "vuex";
-import passwordVue from "../components/setting/password.vue";
+import passwordVue from "../components/setting/password";
 
 export default {
   fetch({ store }) {

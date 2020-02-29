@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import NavigationBar from "~/components/NavigationBar.vue";
+import NavigationBar from "~/components/NavigationBar";
 import axios from "axios";
 import firebase from "~/plugins/firebase.js";
 const UPDATE_URI = "/api/auth";

@@ -7,16 +7,16 @@
 </template>
 
 <script>
-import NavigationBar from "~/components/NavigationBar.vue";
-import BottomNavigationView from "~/components/BottomNavigationView.vue";
-import TabBar from "~/components/TabBar.vue";
+import NavigationBar from "~/components/NavigationBar";
+import BottomNavigationView from "~/components/BottomNavigationView";
+import TabBar from "~/components/TabBar";
 import { mapState } from "vuex";
 export default {
   components: {
     NavigationBar,
     BottomNavigationView
   },
-  computed: mapState(["title",'hiddenBottom']),
+  computed: mapState(["title", "hiddenBottom"]),
   watch: {
     $route: function(e) {
       if (
@@ -30,7 +30,7 @@ export default {
           this.$router.push("login");
         }
         this.$store.commit("setBottomHidden", false);
-      }else{
+      } else {
         this.$store.commit("setBottomHidden", true);
       }
     }

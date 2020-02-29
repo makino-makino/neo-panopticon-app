@@ -8,7 +8,7 @@
 
 <script>
 import axios from "axios";
-import NotificationView from "~/components/notification/NotificationView.vue";
+import NotificationView from "~/components/notification/NotificationView";
 
 const POSTS_URI = "/notifications";
 export default {

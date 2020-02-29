@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import PostListView from "~/components/post/PostListView.vue";
+import PostListView from "~/components/post/PostListView";
 import axios from "axios";
 
 export default {

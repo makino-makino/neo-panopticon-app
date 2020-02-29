@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import UserView from "~/components/user/UserView.vue";
+import UserView from "~/components/user/UserView";
 import axios from "axios";
 
 const USERS_URI = "/users/";

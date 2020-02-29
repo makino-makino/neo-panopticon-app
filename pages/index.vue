@@ -1,19 +1,18 @@
 <template>
-  <div class="container">
-  </div>
+  <div class="container"></div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Logo from "~/components/Logo";
 
 export default {
   components: {
     Logo
   },
-  mounted(){
-    this.$router.push('/localTL')
+  mounted() {
+    this.$router.push("/localTL");
   }
-}
+};
 </script>
 
 <style>
@@ -27,8 +26,8 @@ export default {
 }
 
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;

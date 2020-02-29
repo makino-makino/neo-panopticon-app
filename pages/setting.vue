@@ -32,9 +32,9 @@
 
 <script>
 // javascript
-import profile from "~/components/setting/profile.vue";
-import mail from "~/components/setting/mail.vue";
-import password from "~/components/setting/password.vue";
+import profile from "~/components/setting/profile";
+import mail from "~/components/setting/mail";
+import password from "~/components/setting/password";
 export default {
   components: {
     profile,

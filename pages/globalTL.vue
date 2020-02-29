@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import NavigationBar from "~/components/NavigationBar.vue";
-import PostListView from "~/components/post/PostListView.vue";
+import NavigationBar from "~/components/NavigationBar";
+import PostListView from "~/components/post/PostListView";
 import axios from "axios";
 
 export default {

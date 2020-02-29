@@ -14,7 +14,7 @@ import axios from "axios";
 
 const UPDATE_URI = "/api/auth";
 
-import NavigationBar from "~/components/NavigationBar.vue";
+import NavigationBar from "~/components/NavigationBar";
 export default {
   data() {
     return {
