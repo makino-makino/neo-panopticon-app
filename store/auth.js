@@ -4,16 +4,29 @@ const LOGIN_URI = "/auth/sign_in";
 const REGISTER_URI = "/auth/";
 
 export const state = () => ({
-  loggined: false
+  accessToken: "",
+  client: "",
+  uid: "",
+  userId: null
 });
 
 export const getters = {
-  loggined: state => state.loggined
+  loggined: state => !!state.accessToken,
+  credentials: state => {
+    return {
+      "access-token": state.accessToken,
+      uid: uid,
+      client: client
+    };
+  }
 };
 
 export const mutations = {
-  setLoggined(state, loggined) {
-    state.loggined = loggined;
+  setUser(state, { accessToken, client, uid, userId }) {
+    state.accessToken = accessToken;
+    state.client = client;
+    state.uid = uid;
+    state.userId = userId;
   }
 };
 
@@ -24,17 +37,15 @@ export const actions = {
       password: password
     });
 
-    localStorage.accessToken = resp.headers["access-token"];
-    localStorage.client = resp.headers.client;
-    localStorage.uid = resp.headers.uid;
-
-    localStorage.userId = resp.data.data.id;
-
-    commit("setLoggined", true);
+    commit("setUser", {
+      accessToken: resp.headers["access-token"],
+      client: resp.headers.client,
+      uid: resp.headers.uid,
+      userId: resp.data.data.id
+    });
   },
 
   async register({ commit }, { email, name, password }) {
-    // try {
     const resp = await axios.post(`${process.env.BASE_URL}${REGISTER_URI}`, {
       email: email,
       name: name,
@@ -42,21 +53,20 @@ export const actions = {
       password_confirm: password
     });
 
-    localStorage.accessToken = resp.headers["access-token"];
-    localStorage.client = resp.headers.client;
-    localStorage.uid = resp.headers.uid;
-
-    localStorage.userId = resp.data.data.id;
-
-    commit("setLoggined", true);
+    commit("setUser", {
+      accessToken: resp.headers["access-token"],
+      client: resp.headers.client,
+      uid: resp.headers.uid,
+      userId: resp.data.data.id
+    });
   },
 
   async logout({ commit }) {
-    localStorage.accessToken = null;
-    localStorage.client = null;
-    localStorage.uid = null;
-    localStorage.userId = null;
-
-    commit("setLoggined", false);
+    commit("setUser", {
+      accessToken: "",
+      client: "",
+      uid: "",
+      userId: null
+    });
   }
 };

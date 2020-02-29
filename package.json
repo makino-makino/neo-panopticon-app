@@ -23,7 +23,8 @@
     "node-sass": "^4.13.1",
     "nuxt": "^2.0.0",
     "sass-loader": "^8.0.0",
-    "style-loader": "^1.0.0"
+    "style-loader": "^1.0.0",
+    "vuex-persistedstate": "^2.7.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
