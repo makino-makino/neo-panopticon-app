@@ -45,7 +45,7 @@ export default {
   async mounted() {
     const USER_URI = "/api/users/" + localStorage.userId;
 
-    var resp = await axios.get(`${USER_URI}`);
+    const resp = await axios.get(`${USER_URI}`);
 
     this.user = resp.data;
     if (this.user.icon == "" || this.user.icon == null) {
@@ -85,7 +85,7 @@ export default {
     },
     async update(e) {
       try {
-        var resp = await axios.put(UPDATE_URI, {
+        const resp = await axios.put(UPDATE_URI, {
           name: this.user.name,
           bio: this.user.bio,
           icon: this.user.icon

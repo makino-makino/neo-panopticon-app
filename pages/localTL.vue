@@ -16,7 +16,7 @@ export default {
     PostListView
   },
   mounted() {
-    var userId = localStorage.userId;
+    const userId = localStorage.userId;
     this.query = "tl=local";
     this.loaded = true;
   },

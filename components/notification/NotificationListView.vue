@@ -32,12 +32,12 @@ export default {
       uid: localStorage.uid
     };
 
-    var resp = await axios.get(`${NOTIFICATION_URI}?${this.query}`, {
+    const resp = await axios.get(`${NOTIFICATION_URI}?${this.query}`, {
       headers: HEADERS
     });
 
     this.nots = resp.data;
-    for (var i = 0; i < this.nots.length; i++) {
+    for (let i = 0; i < this.nots.length; i++) {
       if (this.nots[i].type == "retweeted" || this.nots[i].type == "replied") {
         this.nots[i].datum = this.nots[i].post.content;
       } else if (this.nots[i].type == "followed") {

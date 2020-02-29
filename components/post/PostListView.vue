@@ -26,7 +26,7 @@ export default {
     PostView
   },
   async mounted() {
-    var resp = await axios.get(`${POSTS_URI}?${this.query}`);
+    const resp = await axios.get(`${POSTS_URI}?${this.query}`);
     this.posts = resp.data;
   },
   data() {

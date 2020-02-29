@@ -25,7 +25,7 @@ export default {
   // },
 
   async mounted() {
-    var resp = await axios.get(
+    const resp = await axios.get(
       `${FOLLOWINGS_URI}/has_followed/?from_id=${localStorage.userId}&to_id=${this.userId}`
     );
 
@@ -39,7 +39,7 @@ export default {
 
   methods: {
     async submitFollowing() {
-      var resp = await axios.post(FOLLOWINGS_URI, {
+      const resp = await axios.post(FOLLOWINGS_URI, {
         from_id: localStorage.userId,
         to_id: this.userId
       });

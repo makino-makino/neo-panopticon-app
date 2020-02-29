@@ -52,7 +52,7 @@ export default {
     this.time = new Date(this.updatedAt).toLocaleString();
     this.evaluation = Math.round(this.evaluation * 10) / 10;
 
-    var resp = await axios.get(`${EVALUATION_URI}`, {
+    const resp = await axios.get(`${EVALUATION_URI}`, {
       post_id: this.postId,
       user_Id: this.userId
     });
@@ -61,21 +61,18 @@ export default {
   },
   methods: {
     async submitEvaluation(score) {
-      console.log(this.usersEvaluation);
-      console.log(score);
-
       if (this.usersEvaluation === score) {
         score = 0;
       }
 
-      var resp = await axios.post(`${EVALUATION_URI}`, {
+      await axios.post(`${EVALUATION_URI}`, {
         post_id: this.postId,
         score: score
       });
 
       this.usersEvaluation = score;
 
-      var resp = await axios.get(`${POSTS_URI}${this.postId}`);
+      const resp = await axios.get(`${POSTS_URI}${this.postId}`);
       this.evaluation = Math.round(resp.data.evaluation * 10) / 10;
     }
   }

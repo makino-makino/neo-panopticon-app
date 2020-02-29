@@ -22,7 +22,7 @@ export default {
     userId: String
   },
   async mounted() {
-    var resp = await axios.get(`${USERS_URI}${this.userId}`);
+    const resp = await axios.get(`${USERS_URI}${this.userId}`);
     if (resp.data.icon == "" || resp.data.icon == null) {
       resp.data.icon = "/images/people.png";
     }

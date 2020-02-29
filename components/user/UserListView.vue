@@ -26,7 +26,7 @@ export default {
     query: String
   },
   async mounted() {
-    var resp = await axios.get(`${USERS_URI}?${this.query}`);
+    const resp = await axios.get(`${USERS_URI}?${this.query}`);
 
     this.users = resp.data;
   },

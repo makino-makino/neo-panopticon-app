@@ -66,7 +66,7 @@ export default {
       uid: localStorage.uid
     };
 
-    var resp = await axios.get(`${USERS_URI}/${this.userId}`, {
+    const resp = await axios.get(`${USERS_URI}/${this.userId}`, {
       headers: HEADERS
     });
     let aaa = "";

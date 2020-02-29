@@ -31,7 +31,7 @@ export default {
     },
     async updatePass(e) {
       try {
-        var resp = await axios.put(AUTH_URI, {
+        const resp = await axios.put(AUTH_URI, {
           password: this.password,
           password_confirm: this.password_confirm
         });

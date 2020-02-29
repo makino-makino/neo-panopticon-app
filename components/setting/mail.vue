@@ -30,7 +30,7 @@ export default {
     },
     async update(e) {
       try {
-        var resp = await axios.put(UPDATE_URI, {
+        const resp = await axios.put(UPDATE_URI, {
           email: this.email
         });
 

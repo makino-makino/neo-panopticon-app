@@ -24,7 +24,7 @@ export default {
     };
   },
   async mounted() {
-    var resp = await axios.get(POSTS_URI);
+    const resp = await axios.get(POSTS_URI);
     this.notifications = resp.data;
   }
 };
