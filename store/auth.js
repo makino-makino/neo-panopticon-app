@@ -15,8 +15,8 @@ export const getters = {
   credentials: state => {
     return {
       "access-token": state.accessToken,
-      uid: uid,
-      client: client
+      uid: state.uid,
+      client: state.client
     };
   }
 };
@@ -32,7 +32,7 @@ export const mutations = {
 
 export const actions = {
   async login({ commit }, { email, password }) {
-    const resp = await axios.post(`${process.env.BASE_URL}${LOGIN_URI}`, {
+    const resp = await axios.post(LOGIN_URI, {
       email: email,
       password: password
     });
@@ -46,7 +46,7 @@ export const actions = {
   },
 
   async register({ commit }, { email, name, password }) {
-    const resp = await axios.post(`${process.env.BASE_URL}${REGISTER_URI}`, {
+    const resp = await axios.post(REGISTER_URI, {
       email: email,
       name: name,
       password: password,
