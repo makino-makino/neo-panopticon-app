@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import NotificationView from "~/components/NotificationView.vue";
+import NotificationView from "~/components/notification/NotificationListView.vue";
 import axios from "axios";
 
 const NOTIFICATION_URI = "/notifications/";
@@ -52,8 +52,6 @@ export default {
   },
   methods: {}
 };
-
-console.log("hogehogehoghe");
 </script>
 
 <style>

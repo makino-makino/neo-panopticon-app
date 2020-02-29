@@ -6,7 +6,7 @@
 
 <script>
 import NavigationBar from "~/components/NavigationBar.vue";
-import PostListView from "~/components/PostListView.vue";
+import PostListView from "~/components/post/PostListView.vue";
 import axios from "axios";
 
 export default {

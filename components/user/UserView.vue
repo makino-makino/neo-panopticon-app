@@ -14,7 +14,7 @@
 import axios from "axios";
 
 import FollowButton from "~/components/FollowButton.vue";
-import UserBlock from "~/components/UserBlock.vue";
+import UserBlock from "~/components/user/UserBlock.vue";
 
 export default {
   props: {

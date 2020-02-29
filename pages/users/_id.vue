@@ -23,7 +23,7 @@
 <script>
 import axios from "axios";
 import FollowButton from "~/components/FollowButton.vue";
-import PostListView from "~/components/PostListView.vue";
+import PostListView from "~/components/post/PostListView.vue";
 
 const USERS_URI = "/api/users";
 

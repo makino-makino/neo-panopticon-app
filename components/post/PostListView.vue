@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import PostView from "~/components/PostView.vue";
+import PostView from "~/components/post/PostListView.vue";
 import axios from "axios";
 
 const POSTS_URI = "/posts";
