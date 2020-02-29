@@ -31,7 +31,7 @@
 import NavigationBar from "~/components/NavigationBar";
 import axios from "axios";
 import firebase from "~/plugins/firebase.js";
-const UPDATE_URI = "/api/auth";
+const UPDATE_URI = "/auth";
 // const storage = firebase.storage();
 export default {
   data() {
@@ -43,7 +43,7 @@ export default {
     NavigationBar
   },
   async mounted() {
-    const USER_URI = "/api/users/" + localStorage.userId;
+    const USER_URI = "/users/" + localStorage.userId;
 
     const resp = await axios.get(`${USER_URI}`);
 

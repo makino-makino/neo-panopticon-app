@@ -12,7 +12,7 @@
 <script>
 import axios from "axios";
 
-const UPDATE_URI = "/api/auth";
+const UPDATE_URI = "/auth";
 
 import NavigationBar from "~/components/NavigationBar";
 export default {

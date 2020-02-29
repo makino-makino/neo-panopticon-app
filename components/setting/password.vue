@@ -14,7 +14,7 @@
 <script>
 import NavigationBar from "~/components/NavigationBar";
 import axios from "axios";
-const AUTH_URI = "/api/auth/password";
+const AUTH_URI = "/auth/password";
 export default {
   data() {
     return {

@@ -25,7 +25,7 @@ import axios from "axios";
 import FollowButton from "~/components/FollowButton";
 import PostListView from "~/components/post/PostListView";
 
-const USERS_URI = "/api/users";
+const USERS_URI = "/users";
 
 export default {
   components: {

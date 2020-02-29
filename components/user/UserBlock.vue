@@ -15,7 +15,7 @@
 <script>
 import axios from "axios";
 
-const USERS_URI = "/api/users/";
+const USERS_URI = "/users/";
 
 export default {
   props: {
