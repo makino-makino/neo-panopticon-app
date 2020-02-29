@@ -12,7 +12,7 @@
 <script>
 import axios from "axios";
 
-const FOLLOWINGS_API = "/api/followings";
+const FOLLOWINGS_URI = "/followings";
 
 export default {
   props: {
@@ -25,18 +25,8 @@ export default {
   // },
 
   async mounted() {
-    const HEADERS = {
-      Accept: "application/json",
-      "access-token": localStorage.access_token,
-      client: localStorage.client,
-      uid: localStorage.uid
-    };
-
     var resp = await axios.get(
-      `${FOLLOWINGS_API}/has_followed/?from_id=${localStorage.userId}&to_id=${this.userId}`,
-      {
-        headers: HEADERS
-      }
+      `${FOLLOWINGS_URI}/has_followed/?from_id=${localStorage.userId}&to_id=${this.userId}`
     );
 
     this.hasFollowed = resp.data.has_followed;
@@ -49,23 +39,10 @@ export default {
 
   methods: {
     async submitFollowing() {
-      const HEADERS = {
-        Accept: "application/json",
-        "access-token": localStorage.access_token,
-        client: localStorage.client,
-        uid: localStorage.uid
-      };
-
-      var resp = await axios.post(
-        FOLLOWINGS_API,
-        {
-          from_id: localStorage.userId,
-          to_id: this.userId
-        },
-        {
-          headers: HEADERS
-        }
-      );
+      var resp = await axios.post(FOLLOWINGS_URI, {
+        from_id: localStorage.userId,
+        to_id: this.userId
+      });
 
       this.hasFollowed = resp.data.from_id !== null;
     }

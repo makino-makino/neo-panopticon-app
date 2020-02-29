@@ -25,7 +25,7 @@ import axios from "axios";
 import FollowButton from "~/components/FollowButton.vue";
 import PostListView from "~/components/PostListView.vue";
 
-const USERS_API = "/api/users";
+const USERS_URI = "/api/users";
 
 export default {
   components: {
@@ -66,7 +66,7 @@ export default {
       uid: localStorage.uid
     };
 
-    var resp = await axios.get(`${USERS_API}/${this.userId}`, {
+    var resp = await axios.get(`${USERS_URI}/${this.userId}`, {
       headers: HEADERS
     });
     let aaa = "";

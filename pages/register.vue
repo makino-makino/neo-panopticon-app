@@ -1,9 +1,7 @@
 <template>
   <div>
     <div class="content">
-      <nuxt-link to="login" class="userzumi"
-        >既に登録済みの方はこちら</nuxt-link
-      >
+      <nuxt-link to="login" class="userzumi">既に登録済みの方はこちら</nuxt-link>
       <div class="inputs">
         <div class="a_content">
           <div></div>
@@ -38,12 +36,7 @@
           <input v-model="password" type="password" />
         </div>
       </div>
-      <input
-        v-on:click="signUp"
-        value="登録"
-        type="button"
-        class="submitbutton"
-      />
+      <input v-on:click="signUp" value="登録" type="button" class="submitbutton" />
     </div>
   </div>
 </template>

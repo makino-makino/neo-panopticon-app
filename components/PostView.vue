@@ -9,16 +9,10 @@
         <p class="timepostcontet">{{ time }}</p>
       </div>
       <div class="content-buttons-block">
-        <div
-          v-on:click="submitEvaluation(true)"
-          class="pure-button content-button"
-        >
+        <div v-on:click="submitEvaluation(true)" class="pure-button content-button">
           <img src="/images/+ev.png" class="content-button-img" />
         </div>
-        <div
-          v-on:click="submitEvaluation(false)"
-          class="pure-button content-button"
-        >
+        <div v-on:click="submitEvaluation(false)" class="pure-button content-button">
           <img src="/images/-ev.png" class="content-button-img" />
         </div>
         <div class="pure-button content-button pure-button-disabled">
@@ -33,9 +27,9 @@
 import axios from "axios";
 import UserBlock from "~/components/UserBlock";
 
-const POSTS_API = "/api/posts/";
-const USERS_API = "/api/users/";
-const EVALUATION_API = "/api/evaluations/";
+const POSTS_URI = "/posts/";
+const USERS_URI = "/users/";
+const EVALUATION_URI = "/evaluations/";
 
 export default {
   props: {
@@ -60,26 +54,12 @@ export default {
   },
   methods: {
     async submitEvaluation(isPositive) {
-      const HEADERS = {
-        Accept: "application/json",
-        "access-token": localStorage.access_token,
-        client: localStorage.client,
-        uid: localStorage.uid
-      };
+      var resp = await axios.post(`${EVALUATION_URI}`, {
+        post_id: this.postId,
+        is_positive: isPositive
+      });
 
-      var resp = await axios.post(
-        EVALUATION_API,
-        {
-          post_id: this.postId,
-          is_positive: isPositive
-        },
-        {
-          headers: HEADERS
-        }
-      );
-
-      var resp = await axios.get(POSTS_API + this.postId, { headers: HEADERS });
-
+      var resp = await axios.get(`${POSTS_URI}${this.postId}`);
       this.evaluation = Math.round(resp.data.evaluation * 10) / 10;
     }
   }
@@ -108,7 +88,7 @@ export default {
   line-height: 25px;
 }
 
-.timepostcontet{
+.timepostcontet {
   font-size: 17px;
   margin: 0;
   line-height: 25px;
