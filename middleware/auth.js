@@ -1,15 +1,12 @@
 export default ({ route, store, redirect }) => {
-  if (
-    !store.getters["auth/loggined"] &&
-    !["/login", "/register"].includes(route.path)
-  ) {
+  const loggined = store.getters["auth/loggined"];
+  const isGuestPage = ["/login", "/register"].includes(route.path);
+
+  if (!loggined && !isGuestPage) {
     return redirect("/login");
   }
 
-  if (
-    store.getters["auth/loggined"] &&
-    ["/login", "/register"].includes(route.path)
-  ) {
-    return redirect("/localTL");
+  if (loggined && isGuestPage) {
+    return redirect("/login");
   }
 };
