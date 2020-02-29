@@ -20,12 +20,7 @@
           <input v-model="password" type="password" />
         </div>
       </div>
-      <input
-        v-on:click="submit"
-        value="ログイン"
-        type="button"
-        class="submitbutton"
-      />
+      <input v-on:click="submit" value="ログイン" type="button" class="submitbutton" />
     </div>
   </div>
 </template>
@@ -53,11 +48,11 @@ export default {
           email: this.email,
           password: this.password
         });
+
+        this.$router.push("localTL");
       } catch (error) {
         alert(error);
       }
-
-      this.$router.push("localTL");
     }
   }
 };
