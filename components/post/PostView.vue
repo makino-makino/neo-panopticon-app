@@ -25,7 +25,7 @@
 
 <script>
 import axios from "axios";
-import UserBlock from "~/components/UserBlock";
+import UserBlock from "~/components/user/UserBlock";
 
 const POSTS_URI = "/posts/";
 const USERS_URI = "/users/";
