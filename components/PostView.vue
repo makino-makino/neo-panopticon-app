@@ -9,10 +9,10 @@
         <p class="timepostcontet">{{ time }}</p>
       </div>
       <div class="content-buttons-block">
-        <div v-on:click="submitEvaluation(true)" class="pure-button content-button">
+        <div v-on:click="submitEvaluation(1)" class="pure-button content-button">
           <img src="/images/+ev.png" class="content-button-img" />
         </div>
-        <div v-on:click="submitEvaluation(false)" class="pure-button content-button">
+        <div v-on:click="submitEvaluation(-1)" class="pure-button content-button">
           <img src="/images/-ev.png" class="content-button-img" />
         </div>
         <div class="pure-button content-button pure-button-disabled">
@@ -44,20 +44,36 @@ export default {
   },
   data() {
     return {
-      time: ""
+      time: "",
+      usersEvaluation: ""
     };
   },
-  mounted() {
+  async mounted() {
     this.time = new Date(this.updatedAt).toLocaleString();
-
     this.evaluation = Math.round(this.evaluation * 10) / 10;
+
+    var resp = await axios.get(`${EVALUATION_URI}`, {
+      post_id: this.postId,
+      user_Id: this.userId
+    });
+
+    this.usersEvaluation = resp.data[0].score;
   },
   methods: {
-    async submitEvaluation(isPositive) {
+    async submitEvaluation(score) {
+      console.log(this.usersEvaluation);
+      console.log(score);
+
+      if (this.usersEvaluation === score) {
+        score = 0;
+      }
+
       var resp = await axios.post(`${EVALUATION_URI}`, {
         post_id: this.postId,
-        is_positive: isPositive
+        score: score
       });
+
+      this.usersEvaluation = score;
 
       var resp = await axios.get(`${POSTS_URI}${this.postId}`);
       this.evaluation = Math.round(resp.data.evaluation * 10) / 10;
