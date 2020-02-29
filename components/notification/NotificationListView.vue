@@ -25,16 +25,7 @@ export default {
     NotificationView
   },
   async mounted() {
-    const HEADERS = {
-      Accept: "application/json",
-      "access-token": localStorage.access_token,
-      client: localStorage.client,
-      uid: localStorage.uid
-    };
-
-    const resp = await axios.get(`${NOTIFICATION_URI}?${this.query}`, {
-      headers: HEADERS
-    });
+    const resp = await axios.get(`${NOTIFICATION_URI}?${this.query}`);
 
     this.nots = resp.data;
     for (let i = 0; i < this.nots.length; i++) {

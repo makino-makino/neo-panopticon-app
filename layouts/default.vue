@@ -18,7 +18,10 @@ export default {
   },
   computed: mapState(["title", "hiddenBottom"]),
   watch: {
-    $route: function(e) {
+    $route: e => {
+      // const loggined = this.$store.getters["auth/loggined"];
+
+      // if (loggined) {
       if (
         localStorage.access_token == "" &&
         localStorage.client == "" &&

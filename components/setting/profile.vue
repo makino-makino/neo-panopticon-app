@@ -32,6 +32,8 @@ import NavigationBar from "~/components/NavigationBar";
 import axios from "axios";
 import firebase from "~/plugins/firebase.js";
 const UPDATE_URI = "/auth";
+const USER_URI = "/users/";
+
 // const storage = firebase.storage();
 export default {
   data() {
@@ -43,9 +45,9 @@ export default {
     NavigationBar
   },
   async mounted() {
-    const USER_URI = "/users/" + localStorage.userId;
+    const userId = this.$store.getters["auth/userId"];
 
-    const resp = await axios.get(`${USER_URI}`);
+    const resp = await axios.get(`${USER_URI}${userId}`);
 
     this.user = resp.data;
     if (this.user.icon == "" || this.user.icon == null) {
@@ -60,9 +62,11 @@ export default {
         console.log(file);
         const firestorage = firebase.storage();
         try {
+          const userId = this.$store.getters["auth/userId"];
+
           const ref = "public/";
           const uploadTask = await firestorage
-            .ref(localStorage.userId + ".png")
+            .ref(userId + ".png")
             .put(file)
             .then(snapshot => {
               // アップロード完了処理。URLを取得し、呼び出し元へ返す。

@@ -12,6 +12,7 @@ export const state = () => ({
 
 export const getters = {
   loggined: state => !!state.accessToken,
+  userId: state => state.userId,
   credentials: state => {
     return {
       "access-token": state.accessToken,

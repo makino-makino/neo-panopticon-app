@@ -42,7 +42,9 @@ export default {
   },
   computed: {
     amI: function() {
-      return String(localStorage.userId) == String(this.user.id);
+      const userId = this.$store.getters["auth/userId"];
+
+      return String(userId) == String(this.user.id);
     }
   },
   data() {

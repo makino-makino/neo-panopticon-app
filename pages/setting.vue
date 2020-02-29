@@ -53,10 +53,10 @@ export default {
     };
   },
   mounted() {
-    this.userId = localStorage.userId;
+    this.userId = this.$store.getters["auth/userId"];
   },
   methods: {
-    submitEmail: function(event) {
+    submitEmail: event => {
       alert(this.email);
       alert(this.password);
     },
@@ -65,12 +65,9 @@ export default {
     }
   },
   watch: {
-    currentSelecting: function(newValue) {
+    currentSelecting: newValue => {
       if (newValue == "logout") {
-        localStorage.access_token = "";
-        localStorage.client = "";
-        localStorage.uid = "";
-        localStorage.userId = "";
+        this.$store.dispatch("auth/logout");
         this.$router.push("login");
       }
     }

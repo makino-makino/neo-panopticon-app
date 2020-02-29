@@ -49,12 +49,6 @@ export default {
         this.notification.user.icon = "/images/people.png";
       }
     }
-    const HEADERS = {
-      Accept: "application/json",
-      "access-token": localStorage.access_token,
-      client: localStorage.client,
-      uid: localStorage.uid
-    };
   },
   data() {
     return {
