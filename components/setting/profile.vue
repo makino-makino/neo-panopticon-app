@@ -4,7 +4,7 @@
     <div class="contents">
       <div class="image_change">
         <button @click="makino">
-          <img :src="user.icon" alt ref="images"/>
+          <img :src="user.icon" alt ref="images" />
         </button>
         <input
           ref="inputme"
@@ -28,38 +28,30 @@
 </template>
 
 <script>
-import NavigationBar from "~/components/NavigationBar.vue";
+import NavigationBar from "~/components/NavigationBar";
 import axios from "axios";
 import firebase from "~/plugins/firebase.js";
-const UPDATE_API = "/api/auth";
+const UPDATE_URI = "/auth";
+const USER_URI = "/users/";
+
 // const storage = firebase.storage();
 export default {
   data() {
     return {
-      user: {
-      }
+      user: {}
     };
   },
   components: {
     NavigationBar
   },
   async mounted() {
-    const USER_API = "/api/users/" + localStorage.userId;
+    const userId = this.$store.getters["auth/userId"];
 
-    const HEADERS = {
-      Accept: "application/json",
-      "access-token": localStorage.access_token,
-      client: localStorage.client,
-      uid: localStorage.uid
-    };
-    
-    var resp = await axios.get(`${USER_API}`, {
-      headers: HEADERS
-    });
-    console.log(this.user)
+    const resp = await axios.get(`${USER_URI}${userId}`);
+
     this.user = resp.data;
-    if (this.user.icon == "" || this.user.icon == null){
-      this.user.icon = '/images/people.png'
+    if (this.user.icon == "" || this.user.icon == null) {
+      this.user.icon = "/images/people.png";
     }
   },
   methods: {
@@ -70,16 +62,18 @@ export default {
         console.log(file);
         const firestorage = firebase.storage();
         try {
+          const userId = this.$store.getters["auth/userId"];
+
           const ref = "public/";
           const uploadTask = await firestorage
-            .ref(localStorage.userId + ".png")
+            .ref(userId + ".png")
             .put(file)
             .then(snapshot => {
               // アップロード完了処理。URLを取得し、呼び出し元へ返す。
               snapshot.ref.getDownloadURL().then(url => {
-                this.user.icon = url
-                this.$refs.images.src = url
-                console.log(this.user.icon)
+                this.user.icon = url;
+                this.$refs.images.src = url;
+                console.log(this.user.icon);
               });
             });
         } catch (error) {
@@ -94,24 +88,12 @@ export default {
       this.$emit("closechild");
     },
     async update(e) {
-      const HEADERS = {
-        Accept: "application/json",
-        "access-token": localStorage.access_token,
-        client: localStorage.client,
-        uid: localStorage.uid
-      };
       try {
-        var resp = await axios.put(
-          UPDATE_API,
-          {
-            name: this.user.name,
-            bio: this.user.bio,
-            icon: this.user.icon
-          },
-          {
-            headers: HEADERS
-          }
-        );
+        const resp = await axios.put(UPDATE_URI, {
+          name: this.user.name,
+          bio: this.user.bio,
+          icon: this.user.icon
+        });
 
         // TODO: ちゃんと次の場所にジャンプさせる
         this.close();

@@ -9,16 +9,10 @@
         <p class="timepostcontet">{{ time }}</p>
       </div>
       <div class="content-buttons-block">
-        <div
-          v-on:click="submitEvaluation(true)"
-          class="pure-button content-button"
-        >
+        <div v-on:click="submitEvaluation(1)" class="pure-button content-button">
           <img src="/images/+ev.png" class="content-button-img" />
         </div>
-        <div
-          v-on:click="submitEvaluation(false)"
-          class="pure-button content-button"
-        >
+        <div v-on:click="submitEvaluation(-1)" class="pure-button content-button">
           <img src="/images/-ev.png" class="content-button-img" />
         </div>
         <div class="pure-button content-button pure-button-disabled">
@@ -31,11 +25,11 @@
 
 <script>
 import axios from "axios";
-import UserBlock from "~/components/UserBlock";
+import UserBlock from "~/components/user/UserBlock";
 
-const POSTS_API = "/api/posts/";
-const USERS_API = "/api/users/";
-const EVALUATION_API = "/api/evaluations/";
+const POSTS_URI = "/posts/";
+const USERS_URI = "/users/";
+const EVALUATION_URI = "/evaluations/";
 
 export default {
   props: {
@@ -50,36 +44,35 @@ export default {
   },
   data() {
     return {
-      time: ""
+      time: "",
+      usersEvaluation: ""
     };
   },
-  mounted() {
+  async mounted() {
     this.time = new Date(this.updatedAt).toLocaleString();
-
     this.evaluation = Math.round(this.evaluation * 10) / 10;
+
+    const resp = await axios.get(`${EVALUATION_URI}`, {
+      post_id: this.postId,
+      user_Id: this.userId
+    });
+
+    this.usersEvaluation = resp.data[0].score;
   },
   methods: {
-    async submitEvaluation(isPositive) {
-      const HEADERS = {
-        Accept: "application/json",
-        "access-token": localStorage.access_token,
-        client: localStorage.client,
-        uid: localStorage.uid
-      };
+    async submitEvaluation(score) {
+      if (this.usersEvaluation === score) {
+        score = 0;
+      }
 
-      var resp = await axios.post(
-        EVALUATION_API,
-        {
-          post_id: this.postId,
-          is_positive: isPositive
-        },
-        {
-          headers: HEADERS
-        }
-      );
+      await axios.post(`${EVALUATION_URI}`, {
+        post_id: this.postId,
+        score: score
+      });
 
-      var resp = await axios.get(POSTS_API + this.postId, { headers: HEADERS });
+      this.usersEvaluation = score;
 
+      const resp = await axios.get(`${POSTS_URI}${this.postId}`);
       this.evaluation = Math.round(resp.data.evaluation * 10) / 10;
     }
   }
@@ -108,7 +101,7 @@ export default {
   line-height: 25px;
 }
 
-.timepostcontet{
+.timepostcontet {
   font-size: 17px;
   margin: 0;
   line-height: 25px;

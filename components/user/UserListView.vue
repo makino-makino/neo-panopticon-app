@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import UserView from "~/components/UserView.vue";
+import UserView from "~/components/user/UserView";
 import axios from "axios";
 
-const USERS_API = "/api/users/";
+const USERS_URI = "/users/";
 
 export default {
   components: {
@@ -26,16 +26,7 @@ export default {
     query: String
   },
   async mounted() {
-    const HEADERS = {
-      Accept: "application/json",
-      "access-token": localStorage.access_token,
-      client: localStorage.client,
-      uid: localStorage.uid
-    };
-
-    var resp = await axios.get(`${USERS_API}?${this.query}`, {
-      headers: HEADERS
-    });
+    const resp = await axios.get(`${USERS_URI}?${this.query}`);
 
     this.users = resp.data;
   },

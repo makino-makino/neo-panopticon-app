@@ -22,10 +22,10 @@
 
 <script>
 import axios from "axios";
-import FollowButton from "~/components/FollowButton.vue";
-import PostListView from "~/components/PostListView.vue";
+import FollowButton from "~/components/FollowButton";
+import PostListView from "~/components/post/PostListView";
 
-const USERS_API = "/api/users";
+const USERS_URI = "/users";
 
 export default {
   components: {
@@ -42,7 +42,9 @@ export default {
   },
   computed: {
     amI: function() {
-      return String(localStorage.userId) == String(this.user.id);
+      const userId = this.$store.getters["auth/userId"];
+
+      return String(userId) == String(this.user.id);
     }
   },
   data() {
@@ -59,16 +61,7 @@ export default {
     };
   },
   async mounted() {
-    const HEADERS = {
-      Accept: "application/json",
-      "access-token": localStorage.access_token,
-      client: localStorage.client,
-      uid: localStorage.uid
-    };
-
-    var resp = await axios.get(`${USERS_API}/${this.userId}`, {
-      headers: HEADERS
-    });
+    const resp = await axios.get(`${USERS_URI}/${this.userId}`);
     let aaa = "";
     if (resp.data.icon == "" || resp.data.icon == null) {
       resp.data.icon = "/images/people.png";

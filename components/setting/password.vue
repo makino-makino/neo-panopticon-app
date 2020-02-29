@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import NavigationBar from "~/components/NavigationBar.vue";
+import NavigationBar from "~/components/NavigationBar";
 import axios from "axios";
-const AUTH_API = "/api/auth/password";
+const AUTH_URI = "/auth/password";
 export default {
   data() {
     return {
@@ -31,22 +31,10 @@ export default {
     },
     async updatePass(e) {
       try {
-        const HEADERS = {
-          Accept: "application/json",
-          "access-token": localStorage.access_token,
-          client: localStorage.client,
-          uid: localStorage.uid
-        };
-        var resp = await axios.put(
-          AUTH_API,
-          {
-            password: this.password,
-            password_confirm: this.password_confirm
-          },
-          {
-            headers: HEADERS
-          }
-        );
+        const resp = await axios.put(AUTH_URI, {
+          password: this.password,
+          password_confirm: this.password_confirm
+        });
         this.close();
       } catch (e) {
         console.log(e);

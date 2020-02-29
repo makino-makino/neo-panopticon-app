@@ -19,14 +19,14 @@
           </div>
           <input v-model="email" type="mail" />
         </div>
-        <div class="a_content">
+        <!-- <div class="a_content">
           <div></div>
           <p>電話番号</p>
           <div class="imagebox">
             <img src="/images/phone.svg" alt class="image" />
           </div>
           <input v-model="phone" type="text" />
-        </div>
+        </div>-->
         <div class="a_content">
           <div></div>
           <p>パスワード</p>
@@ -42,10 +42,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
-const SIGN_UP_API = "/api/auth";
-
 export default {
   fetch({ store }) {
     return store.commit("setNavigationBar", "登録");
@@ -55,7 +51,6 @@ export default {
     return {
       name: "",
       email: "",
-      phone: "",
       password: "",
       password_confirm: ""
     };
@@ -63,23 +58,15 @@ export default {
   methods: {
     async signUp(e) {
       try {
-        var resp = await axios.post(SIGN_UP_API, {
+        await this.$store.dispatch("auth/register", {
           name: this.name,
           email: this.email,
-          phone: this.phone,
-          password: this.password,
-          password_confirm: this.password_confirm
+          password: this.password
         });
 
-        localStorage.access_token = resp.headers["access-token"];
-        localStorage.client = resp.headers.client;
-        localStorage.uid = resp.headers.uid;
-        localStorage.userId = resp.data.data.id;
-
-        // TODO: ちゃんと次の場所にジャンプさせる
         this.$router.push("localTL");
       } catch (e) {
-        console.log(e);
+        alert(e);
       }
     }
   }

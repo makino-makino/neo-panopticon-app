@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import PostView from "~/components/PostView.vue";
+import PostView from "~/components/post/PostView";
 import axios from "axios";
 
-const POSTS_API = "/api/posts";
+const POSTS_URI = "/posts";
 
 export default {
   props: {
@@ -26,19 +26,8 @@ export default {
     PostView
   },
   async mounted() {
-    const HEADERS = {
-      Accept: "application/json",
-      "access-token": localStorage.access_token,
-      client: localStorage.client,
-      uid: localStorage.uid
-    };
-
-    var resp = await axios.get(`${POSTS_API}?${this.query}`, {
-      headers: HEADERS
-    });
-
+    const resp = await axios.get(`${POSTS_URI}?${this.query}`);
     this.posts = resp.data;
-    console.log(this.posts);
   },
   data() {
     return {

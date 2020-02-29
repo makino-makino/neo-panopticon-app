@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import NavigationBar from "~/components/NavigationBar.vue";
+import NavigationBar from "~/components/NavigationBar";
 import axios from "axios";
 
-const POSTS_API = "/api/posts";
+const POSTS_URI = "/posts";
 
 export default {
   fetch({ store }) {
@@ -25,24 +25,11 @@ export default {
   methods: {
     async submit(e) {
       if (this.content != "") {
-        const HEADERS = {
-          Accept: "application/json",
-          "access-token": localStorage.access_token,
-          client: localStorage.client,
-          uid: localStorage.uid
-        };
+        const resp = await axios.post(POSTS_URI, {
+          content: this.content
+        });
 
-        var resp = await axios.post(
-          POSTS_API,
-          {
-            content: this.content
-          },
-          {
-            headers: HEADERS
-          }
-        );
-
-        this.$router.push('localTL');
+        this.$router.push("localTL");
       } else {
         alert("投稿を入力してください");
       }

@@ -1,9 +1,11 @@
 version: '3'
 services:
   app:
-    image: node:8.16.2-jessie
+    build: .
     working_dir: /app
-    command: sh -c 'npm install && npm run generate'
+    command: sh -c 'npm start'
     volumes:
       - ".:/app"
-      - "/app/node_modules"
+        #  - "/app/node_modules"
+    ports:
+      - "3000:3000"

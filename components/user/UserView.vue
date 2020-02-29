@@ -13,8 +13,8 @@
 <script>
 import axios from "axios";
 
-import FollowButton from "~/components/FollowButton.vue";
-import UserBlock from "~/components/UserBlock.vue";
+import FollowButton from "~/components/FollowButton";
+import UserBlock from "~/components/user/UserBlock";
 
 export default {
   props: {

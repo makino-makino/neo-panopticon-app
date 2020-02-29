@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import UserListView from "~/components/UserListView.vue";
+import UserListView from "~/components/user/UserListView";
 import axios from "axios";
 
 export default {

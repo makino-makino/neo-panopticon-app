@@ -18,7 +18,11 @@
         </div>
       </div>
       <div class="notification_content">
-        <p>{{notification.post.name}}さんからのリプライ<br>{{notification.post.content}}</p>
+        <p>
+          {{notification.post.name}}さんからのリプライ
+          <br />
+          {{notification.post.content}}
+        </p>
       </div>
     </div>
   </div>
@@ -27,26 +31,24 @@
 <script>
 import axios from "axios";
 
-//const USERS_API = '/api/users/'
-
 export default {
   props: ["notification"],
   async mounted() {
-    if (this.notification.type == "replied"){
-      if (this.notification.post.icon == null  || this.notification.post.icon == "") {
+    if (this.notification.type == "replied") {
+      if (
+        this.notification.post.icon == null ||
+        this.notification.post.icon == ""
+      ) {
         this.notification.post.icon = "/images/people.png";
       }
-    }else{
-      if (this.notification.user.icon == null  || this.notification.user.icon == "") {
+    } else {
+      if (
+        this.notification.user.icon == null ||
+        this.notification.user.icon == ""
+      ) {
         this.notification.user.icon = "/images/people.png";
       }
     }
-    const HEADERS = {
-      Accept: "application/json",
-      "access-token": localStorage.access_token,
-      client: localStorage.client,
-      uid: localStorage.uid
-    };
   },
   data() {
     return {

@@ -32,9 +32,9 @@
 
 <script>
 // javascript
-import profile from "~/components/setting/profile.vue";
-import mail from "~/components/setting/mail.vue";
-import password from "~/components/setting/password.vue";
+import profile from "~/components/setting/profile";
+import mail from "~/components/setting/mail";
+import password from "~/components/setting/password";
 export default {
   components: {
     profile,
@@ -53,10 +53,10 @@ export default {
     };
   },
   mounted() {
-    this.userId = localStorage.userId;
+    this.userId = this.$store.getters["auth/userId"];
   },
   methods: {
-    submitEmail: function(event) {
+    submitEmail: event => {
       alert(this.email);
       alert(this.password);
     },
@@ -65,12 +65,9 @@ export default {
     }
   },
   watch: {
-    currentSelecting: function(newValue) {
+    currentSelecting: newValue => {
       if (newValue == "logout") {
-        localStorage.access_token = "";
-        localStorage.client = "";
-        localStorage.uid = "";
-        localStorage.userId = "";
+        this.$store.dispatch("auth/logout");
         this.$router.push("login");
       }
     }

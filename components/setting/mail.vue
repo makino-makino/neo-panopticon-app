@@ -12,9 +12,9 @@
 <script>
 import axios from "axios";
 
-const UPDATE_API = "/api/auth";
+const UPDATE_URI = "/auth";
 
-import NavigationBar from "~/components/NavigationBar.vue";
+import NavigationBar from "~/components/NavigationBar";
 export default {
   data() {
     return {
@@ -30,25 +30,15 @@ export default {
     },
     async update(e) {
       try {
-        const HEADERS = {
-          Accept: "application/json",
-          "access-token": localStorage.access_token,
-          client: localStorage.client,
-          uid: localStorage.uid
-        };
-        var resp = await axios.put(
-          UPDATE_API,
-          {
-            email: this.email
-          },
-          {
-            headers: HEADERS
-          }
-        );
+        const resp = await axios.put(UPDATE_URI, {
+          email: this.email
+        });
 
         // TODO: ちゃんと次の場所にジャンプさせる
+        // TODO: storeに入れる
         localStorage.uid = resp.headers.uid;
-        this.close()
+
+        this.close();
       } catch (e) {
         console.log(e);
       }

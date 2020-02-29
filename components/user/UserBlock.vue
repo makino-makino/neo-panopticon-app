@@ -15,22 +15,14 @@
 <script>
 import axios from "axios";
 
-const USERS_API = "/api/users/";
+const USERS_URI = "/users/";
 
 export default {
   props: {
     userId: String
   },
   async mounted() {
-    const HEADERS = {
-      Accept: "application/json",
-      "access-token": localStorage.access_token,
-      client: localStorage.client,
-      uid: localStorage.uid
-    };
-
-    var resp = await axios.get(USERS_API + this.userId, { headers: HEADERS });
-    let aaa = "";
+    const resp = await axios.get(`${USERS_URI}${this.userId}`);
     if (resp.data.icon == "" || resp.data.icon == null) {
       resp.data.icon = "/images/people.png";
     }

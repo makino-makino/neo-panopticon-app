@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import PostListView from "~/components/PostListView.vue";
+import PostListView from "~/components/post/PostListView";
 import axios from "axios";
 
 export default {
@@ -16,7 +16,6 @@ export default {
     PostListView
   },
   mounted() {
-    var userId = localStorage.userId;
     this.query = "tl=local";
     this.loaded = true;
   },
