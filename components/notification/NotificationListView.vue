@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import NotificationView from "~/components/notification/NotificationListView";
+import NotificationView from "~/components/notification/NotificationView";
 import axios from "axios";
 
 const NOTIFICATION_URI = "/notifications/";
