@@ -59,16 +59,7 @@ export default {
     };
   },
   async mounted() {
-    const HEADERS = {
-      Accept: "application/json",
-      "access-token": localStorage.access_token,
-      client: localStorage.client,
-      uid: localStorage.uid
-    };
-
-    const resp = await axios.get(`${USERS_URI}/${this.userId}`, {
-      headers: HEADERS
-    });
+    const resp = await axios.get(`${USERS_URI}/${this.userId}`);
     let aaa = "";
     if (resp.data.icon == "" || resp.data.icon == null) {
       resp.data.icon = "/images/people.png";
