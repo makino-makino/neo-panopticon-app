@@ -25,7 +25,7 @@ export default {
   methods: {
     async submit(e) {
       if (this.content != "") {
-        var resp = await axios.post(POSTS_URI, {
+        const resp = await axios.post(POSTS_URI, {
           content: this.content
         });
 
