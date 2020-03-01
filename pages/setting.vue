@@ -17,7 +17,7 @@
         パスワードの変更
         <div class="arrow">></div>
       </button>
-      <button class="aSetting" v-on:click="currentSelecting = 'logout'">
+      <button class="aSetting" v-on:click="logout()">
         ログアウト
         <div class="arrow">></div>
       </button>
@@ -62,14 +62,10 @@ export default {
     },
     close() {
       this.currentSelecting = "";
-    }
-  },
-  watch: {
-    currentSelecting: newValue => {
-      if (newValue == "logout") {
-        this.$store.dispatch("auth/logout");
-        this.$router.push("login");
-      }
+    },
+    logout() {
+      this.$store.dispatch("auth/logout");
+      this.$router.push("login");
     }
   }
 };

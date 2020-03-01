@@ -62,7 +62,7 @@ export const actions = {
     });
   },
 
-  async logout({ commit }) {
+  logout({ commit }) {
     commit("setUser", {
       accessToken: "",
       client: "",
