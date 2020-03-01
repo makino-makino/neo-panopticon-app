@@ -44,7 +44,7 @@ export default {
     amI: function() {
       const userId = this.$store.getters["auth/userId"];
 
-      return String(userId) == String(this.user.id);
+      return userId == this.user.id;
     }
   },
   data() {
@@ -70,7 +70,7 @@ export default {
     this.user = resp.data;
 
     this.loaded = true;
-    this.query = `tl=user&user_id=${this.userId}`;
+    this.query = `type=user&user_id=${this.userId}`;
   }
 };
 </script>

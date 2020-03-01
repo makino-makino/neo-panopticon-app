@@ -27,7 +27,7 @@ export default {
   async mounted() {
     const userId = this.$store.getters["auth/userId"];
     const resp = await axios.get(
-      `${FOLLOWINGS_URI}/has_followed/?from_id=${userId}&to_id=${this.userId}`
+      `${FOLLOWINGS_URI}/?from_id=${userId}&to_id=${this.userId}`
     );
 
     this.hasFollowed = resp.data.has_followed;

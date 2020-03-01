@@ -25,7 +25,7 @@ export default {
   data: () => {
     return {
       posts: [],
-      query: "tl=global"
+      query: ""
     };
   },
   methods: {}
