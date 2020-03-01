@@ -16,7 +16,7 @@ export default {
     PostListView
   },
   mounted() {
-    this.query = "tl=local";
+    this.query = "type=local";
     this.loaded = true;
   },
   head() {
