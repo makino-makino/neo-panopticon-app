@@ -9,10 +9,6 @@
         プロフィールの変更
         <div class="arrow"></div>
       </button>
-      <button class="aSetting" v-on:click="currentSelecting = 'email'">
-        メールアドレスの変更
-        <div class="arrow">></div>
-      </button>
       <button class="aSetting" v-on:click="currentSelecting = 'password'">
         パスワードの変更
         <div class="arrow">></div>
@@ -23,7 +19,6 @@
       </button>
       <transition name="pages">
         <profile v-if="currentSelecting == 'profile'" @closechild="close" />
-        <mail v-if="currentSelecting == 'email'" @closechild="close" />
         <password v-if="currentSelecting == 'password'" @closechild="close" />
       </transition>
     </div>
@@ -33,12 +28,10 @@
 <script>
 // javascript
 import profile from "~/components/setting/profile";
-import mail from "~/components/setting/mail";
 import password from "~/components/setting/password";
 export default {
   components: {
     profile,
-    mail,
     password
   },
   fetch({ store }) {
@@ -56,10 +49,6 @@ export default {
     this.userId = this.$store.getters["auth/userId"];
   },
   methods: {
-    submitEmail: event => {
-      alert(this.email);
-      alert(this.password);
-    },
     close() {
       this.currentSelecting = "";
     },
