@@ -64,7 +64,7 @@ export default {
           password: this.password
         });
 
-        this.$router.push("localTL");
+        this.$router.push("login");
       } catch (e) {
         alert(e);
       }

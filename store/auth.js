@@ -50,8 +50,7 @@ export const actions = {
     const resp = await axios.post(REGISTER_URI, {
       email: email,
       name: name,
-      password: password,
-      password_confirm: password
+      password: password
     });
 
     commit("setUser", {
