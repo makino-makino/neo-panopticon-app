@@ -20,7 +20,12 @@
           <input v-model="password" type="password" />
         </div>
       </div>
-      <input v-on:click="submit" value="ログイン" type="button" class="submitbutton" />
+      <input
+        v-on:click="submit"
+        value="ログイン"
+        type="button"
+        class="submitbutton"
+      />
     </div>
   </div>
 </template>
@@ -51,6 +56,7 @@ export default {
 
         this.$router.push("localTL");
       } catch (error) {
+        alert("ログインに失敗しました");
         alert(error);
       }
     }

@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="content">
-      <nuxt-link to="login" class="userzumi">既に登録済みの方はこちら</nuxt-link>
+      <nuxt-link to="login" class="userzumi"
+        >既に登録済みの方はこちら</nuxt-link
+      >
       <div class="inputs">
         <div class="a_content">
           <div></div>
@@ -13,11 +15,11 @@
         </div>
         <div class="a_content">
           <div></div>
-          <p>メールアドレス</p>
+          <p>メールアドレス（keio.jp）</p>
           <div class="imagebox">
             <img src="/images/mail.png" alt class="image" />
           </div>
-          <input v-model="email" type="mail" />
+          <input v-model="email" type="mail" placeholder="taro@keio.jp" />
         </div>
         <!-- <div class="a_content">
           <div></div>
@@ -36,7 +38,12 @@
           <input v-model="password" type="password" />
         </div>
       </div>
-      <input v-on:click="signUp" value="登録" type="button" class="submitbutton" />
+      <input
+        v-on:click="signUp"
+        value="登録"
+        type="button"
+        class="submitbutton"
+      />
     </div>
   </div>
 </template>
@@ -66,6 +73,7 @@ export default {
 
         this.$router.push("login");
       } catch (e) {
+        alert("登録に失敗しました。");
         alert(e);
       }
     }
