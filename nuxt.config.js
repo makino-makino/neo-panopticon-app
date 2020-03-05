@@ -62,7 +62,7 @@ export default {
   axios: {},
 
   env: {
-    BASE_URL: "http://localhost:3000"
+    BASE_URL: "https://neo-panopticon.herokuapp.com"
   },
 
   /*
