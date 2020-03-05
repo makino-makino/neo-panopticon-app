@@ -23,14 +23,13 @@ export default {
   //     userId: `${params.id}`
   //   };
   // },
-
   async mounted() {
     const userId = this.$store.getters["auth/userId"];
     const resp = await axios.get(
       `${FOLLOWINGS_URI}/?from_id=${userId}&to_id=${this.userId}`
     );
 
-    this.hasFollowed = resp.data.has_followed;
+    this.hasFollowed = !!resp.data.length;
   },
   data() {
     return {
@@ -47,7 +46,8 @@ export default {
         to_id: this.userId
       });
 
-      this.hasFollowed = resp.data.from_id !== null;
+      // ここ判定雑
+      this.hasFollowed = !this.hasFollowed;
     }
   }
 };
